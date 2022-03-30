@@ -162,31 +162,25 @@
         .content_ranking::-webkit-scrollbar-thumb:hover {
             background: #c0a0b9;
         }
-
-        ul.pagination {
-            margin: 20px 20px;
+        .title-cate .swiper-slide {
+            width: auto;
         }
-
-        ul.pagination > li {
-            margin: 0px 3px;
-        }
-
-        ul.pagination > li.active > a {
-            background: #0b93d5;
-            color: white;
-            border: 1px solid #0b93d5;
-            font-weight: bold;
-        }
-
-        ul.pagination > li > a {
-            padding: 5px 10px;
-            border: 1px solid black;
-        }
-
         .swiper-container{
-            position: relative;
-            margin: 0;
-            padding: 0;
+            overflow: hidden;
+        }
+        .swiper-button-prev {
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%234c71ae'%2F%3E%3C%2Fsvg%3E") !important;
+            width: 20px;
+            height: 20px;
+            top: 26px;
+            right: 40px;
+            left: auto;
+         }
+        .swiper-button-next {
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%234c71ae'%2F%3E%3C%2Fsvg%3E") !important;
+            width: 20px;
+            height: 20px;
+            top: 26px;
         }
     </style>
 </head>
@@ -214,20 +208,65 @@
                         </svg>
                       </span>
                 </div>
-                <div class="swiper-container  w-[70%]">
-                    <div class="swiper mySwiper">
-                        <div class="swiper-wrapper flex justify-around">
-                            <div class="swiper-slide">Slide 1</div>
-                            <div class="swiper-slide">Slide 2</div>
-                            <div class="swiper-slide">Slide 3</div>
-                            <div class="swiper-slide">Slide 4</div>
-                            <div class="swiper-slide">Slide 5</div>
-                            <div class="swiper-slide">Slide 6</div>
-                            <div class="swiper-slide">Slide 7</div>
-                            <div class="swiper-slide">Slide 8</div>
-                            <div class="swiper-slide">Slide 9</div>
+                <div class="box-cate__content w-[70%] my-auto">
+                    <div class="title-cate">
+                        <div class="relative">
+                            <div class="swiper-container swp-left">
+                                <div class="swiper-wrapper">
+                                    <button
+                                        class="swiper-slide bg-white hover:bg-gray-100 text-gray-800 font-semibold border border-gray-400 rounded-full shadow p-[5px]">
+                                        Phim bộ
+                                    </button>
+                                    <button
+                                        class="swiper-slide bg-white hover:bg-gray-100 text-gray-800 font-semibold border border-gray-400 rounded-full shadow p-[5px]">
+                                        Phim lẻ
+                                    </button>
+                                    <button
+                                        class="swiper-slide bg-white hover:bg-gray-100 text-gray-800 font-semibold border border-gray-400 rounded-full shadow p-[5px]">
+                                        Phim Việt Nam
+                                    </button>
+                                    <button
+                                        class="swiper-slide bg-white hover:bg-gray-100 text-gray-800 font-semibold border border-gray-400 rounded-full shadow p-[5px]">
+                                        Phim chiếu rạp
+                                    </button>
+                                    <button
+                                        class="swiper-slide bg-white hover:bg-gray-100 text-gray-800 font-semibold border border-gray-400 rounded-full shadow p-[5px]">
+                                        Xếp hạng tuần
+                                    </button>
+                                    <button
+                                        class="swiper-slide bg-white hover:bg-gray-100 text-gray-800 font-semibold border border-gray-400 rounded-full shadow p-[5px]">
+                                        Phim kinh dị
+                                    </button>
+                                    <button
+                                        class="swiper-slide bg-white hover:bg-gray-100 text-gray-800 font-semibold border border-gray-400 rounded-full shadow p-[5px]">
+                                        Phim hoạt hình
+                                    </button>
+                                    <button
+                                        class="swiper-slide bg-white hover:bg-gray-100 text-gray-800 font-semibold border border-gray-400 rounded-full shadow p-[5px]">
+                                        Phim cổ trang
+                                    </button>
+                                    <button
+                                        class="swiper-slide bg-white hover:bg-gray-100 text-gray-800 font-semibold border border-gray-400 rounded-full shadow p-[5px]">
+                                        Phim thiếu nhi
+                                    </button>
+                                    <button
+                                        class="swiper-slide bg-white hover:bg-gray-100 text-gray-800 font-semibold border border-gray-400 rounded-full shadow p-[5px]">
+                                        Phim hài
+                                    </button>
+                                    <button
+                                        class="swiper-slide bg-white hover:bg-gray-100 text-gray-800 font-semibold border border-gray-400 rounded-full shadow p-[5px]">
+                                        Phim xuyên không
+                                    </button>
+                                    <button
+                                        class="swiper-slide bg-white hover:bg-gray-100 text-gray-800 font-semibold border border-gray-400 rounded-full shadow p-[5px]">
+                                        Phim tình cảm
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Add Arrows -->
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
                         </div>
-                        <div class="swiper-pagination"></div>
                     </div>
                 </div>
             </div>
@@ -498,20 +537,19 @@
             show_menu = true;
         }
     });
-    var swiper = new Swiper(
-        ".swiper-container",
-        {
-            //centeredSlides: "true",
-            slidesPerView: "auto",
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev'
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                type: 'fraction',
-            }
-        }
-    );
+    new Swiper('.box-cate__content .swiper-container', {
+        slidesPerView: "auto",
+        paginationClickable: false,
+        spaceBetween: 30,
+        loop: false,
+        navigation: {
+            nextEl: '.box-cate__content .swiper-button-next',
+            prevEl: '.box-cate__content .swiper-button-prev',
+        },
+    });
+    if($('div.swiper-button-next').hasClass('swiper-button-disabled')){
+        $('div.swiper-button-next').attr("style", "display: none");
+        $('div.swiper-button-prev').attr("style", "display: none");
+    }
 </script>
 </html>

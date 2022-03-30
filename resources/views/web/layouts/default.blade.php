@@ -1,188 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-    @section('meta')
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @show
-    <title>Web.Clip.vn</title>
-    @section('style')
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Streaming HAUI</title>
     <!-- fontawesome -->
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-              integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
-              crossorigin="anonymous"/>
-        <!-- tailwind -->
-        <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-        <!-- add icon link -->
-        <link rel="icon" href="{{ asset('images/logo2.png') }}" type="image/x-icon">
-        <!-- font family -->
-        <link
-            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-            rel="stylesheet">
-        <!-- swiper -->
-        <link
-            rel="stylesheet"
-            href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
-        />
-    @show
-    @section('script')
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+          crossorigin="anonymous"/>
+    <!-- tailwind -->
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <!-- add icon link -->
+    <link rel="icon" href="{{ asset('images/logo2.png') }}" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style-layout.css') }}">
+    <!-- font family -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+        rel="stylesheet">
+    <!-- swiper -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+    />
     <!-- tailwind cdn -->
-        <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
-        <!-- jquery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <!-- swiper -->
-        <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-    @show
-    <style>
-        body::-webkit-scrollbar {
-            width: 15px;
-            height: 10px;
-        }
-
-        body::-webkit-scrollbar-track {
-            border-radius: 100vh;
-            background: #f7f4ed;
-        }
-
-        body::-webkit-scrollbar-thumb {
-            background: #cccccc;
-            border-radius: 100vh;
-            border: 3px solid #f6f7ed;
-        }
-
-        body::-webkit-scrollbar-thumb:hover {
-            background: #c0a0b9;
-        }
-
-        .user {
-            height: 50px;
-        }
-
-        .btn_account {
-            color: #F36A5A;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 4px;
-            padding: 5px;
-            border: unset;
-            position: relative;
-            cursor: pointer;
-        }
-
-        .btn_account:focus {
-            outline: unset;
-        }
-
-        .btn_account img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 5px;
-        }
-
-        .btn_account i {
-            font-size: 20px;
-            margin-left: 5px;
-        }
-
-        .btn_account .sub_menu {
-            position: absolute;
-            top: 55px;
-            background-color: white;
-            width: 200px;
-            right: 0;
-            z-index: 1;
-            border: 1px solid #cccccc;
-            padding: 0 15px;
-        }
-
-        .btn_account .sub_menu ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            text-align: left;
-        }
-
-        .btn_account .sub_menu ul li a {
-            display: block;
-            padding: 15px 0;
-            text-decoration: none;
-            color: #000000;
-            font-size: 14px;
-            border-bottom: 1px solid #ccc;
-        }
-
-        .btn_account .sub_menu ul li:last-child a {
-            border-bottom: 0;
-        }
-
-        .btn_account .sub_menu ul li a i {
-            font-size: 14px;
-            color: #272e36d9;
-            float: right;
-        }
-
-        .banner img {
-            width: 100%;
-            height: 600px;
-        }
-
-        .title_ranking {
-            background-image: linear-gradient(to top, #ba1236, #e03);
-            border-radius: 5px 5px 0 0;
-            height: 70px;
-        }
-
-        .title_ranking span {
-            font-size: 27px;
-            line-height: 60px;
-            font-weight: 900;
-            color: white;
-        }
-
-        .content_ranking::-webkit-scrollbar {
-            width: 10px;
-            height: 10px;
-        }
-
-        .content_ranking::-webkit-scrollbar-track {
-            border-radius: 100vh;
-            background: #f7f4ed;
-        }
-
-        .content_ranking::-webkit-scrollbar-thumb {
-            background: #cccccc;
-            border-radius: 100vh;
-            border: 3px solid #f6f7ed;
-        }
-
-        .content_ranking::-webkit-scrollbar-thumb:hover {
-            background: #c0a0b9;
-        }
-        .title-cate .swiper-slide {
-            width: auto;
-        }
-        .swiper-container{
-            overflow: hidden;
-        }
-        .swiper-button-prev {
-            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%234c71ae'%2F%3E%3C%2Fsvg%3E") !important;
-            width: 20px;
-            height: 20px;
-            top: 26px;
-            right: 40px;
-            left: auto;
-         }
-        .swiper-button-next {
-            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%234c71ae'%2F%3E%3C%2Fsvg%3E") !important;
-            width: 20px;
-            height: 20px;
-            top: 26px;
-        }
-    </style>
+    <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- swiper -->
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 </head>
 <body>
 <div class="header p-[3px] pt-3">

@@ -29,6 +29,37 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- swiper -->
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <style>
+        .title-cate .swiper-slide {
+            width: auto;
+        }
+        .swiper-container{
+            overflow: hidden;
+        }
+        .swiper-button-prev {
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%234c71ae'%2F%3E%3C%2Fsvg%3E") !important;
+            background-repeat: no-repeat;
+            width: 20px;
+            height: 20px;
+            top: 26px;
+            right: -35px;
+            left: auto;
+        }
+        .swiper-button-next {
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%234c71ae'%2F%3E%3C%2Fsvg%3E") !important;
+            background-repeat: no-repeat;
+            width: 20px;
+            height: 20px;
+            top: 26px;
+            right: -55px;
+        }
+        .swiper-button-next:after, .swiper-rtl .swiper-button-prev:after {
+            display: none;
+        }
+        .swiper-button-prev:after, .swiper-rtl .swiper-button-next:after {
+            display: none;
+        }
+    </style>
 </head>
 <body>
 <div class="header p-[3px] pt-3">
@@ -39,7 +70,7 @@
             </a>
         </div>
         <div class="w-[84%] my-auto">
-            <div class="flex justify-between">
+            <div class="flex justify-start">
                 <div class="input-group relative flex flex-nowrap items-stretch rounded mb-[3px] w-[30%]">
                     <input type="search"
                            class="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-[#FFFF00] focus:outline-none"
@@ -54,7 +85,7 @@
                         </svg>
                       </span>
                 </div>
-                <div class="box-cate__content w-[70%] my-auto">
+                <div class="box-cate__content w-[65%] my-auto">
                     <div class="title-cate">
                         <div class="relative">
                             <div class="swiper-container swp-left">
@@ -283,7 +314,7 @@
         <div class="list_film">
             <div class="ele_list mt-5">
                 <div class="flex justify-between mb-3">
-                    <p class="text-3xl font-bold border-b-4 border-[#F5E0C3]">Phim bộ</p>
+                    <p class="text-3xl font-bold border-b-4 border-[#0099FF]">Phim bộ</p>
                     <a href="#">Xem tất cả</a>
                 </div>
                 <div class="grid grid-cols-5 gap-5">
@@ -311,7 +342,7 @@
             </div>
             <div class="ele_list mt-5">
                 <div class="flex justify-between mb-3">
-                    <p class="text-3xl font-bold border-b-4 border-[#F5E0C3]">Phim chiếu rạp</p>
+                    <p class="text-3xl font-bold border-b-4 border-[#0099FF]">Phim chiếu rạp</p>
                     <a href="#">Xem tất cả</a>
                 </div>
                 <div class="grid grid-cols-5 gap-5">
@@ -339,7 +370,7 @@
             </div>
             <div class="ele_list mt-5">
                 <div class="flex justify-between mb-3">
-                    <p class="text-3xl font-bold border-b-4 border-[#F5E0C3]">Phim Việt Nam</p>
+                    <p class="text-3xl font-bold border-b-4 border-[#0099FF]">Phim Việt Nam</p>
                     <a href="#">Xem tất cả</a>
                 </div>
                 <div class="grid grid-cols-5 gap-5">

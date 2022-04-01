@@ -44,8 +44,9 @@
 @extends('web.layouts.sidebar')
 <!-- end sidebar -->
 
+@yield('content-main')
 <!-- content body -->
-@extends('web.home.main')
+{{--@extends('web.home.main')--}}
 <!-- end content body -->
 </body>
 </html>

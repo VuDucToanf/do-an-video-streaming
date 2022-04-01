@@ -125,3 +125,23 @@ body::-webkit-scrollbar-thumb:hover {
 .content_ranking::-webkit-scrollbar-thumb:hover {
     background: #c0a0b9;
 }
+
+.header{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 100;
+}
+
+aside.sidebar{
+    position: fixed;
+    top: 100px;
+    right: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.main{
+    /*overflow-y: scroll;*/
+}

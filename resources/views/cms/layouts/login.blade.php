@@ -33,12 +33,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <form action="#" method="post">
             <input type="email" class="ggg" name="Email" placeholder="E-MAIL" required="">
             <input type="password" class="ggg" name="Password" placeholder="PASSWORD" required="">
-            <span><input type="checkbox" />Remember me</span>
+            <span><input type="checkbox" /> Remember me</span>
             <h6><a href="#">Quên mật khẩu</a></h6>
             <div class="clearfix"></div>
             <input type="submit" value="Sign In" name="login">
         </form>
-        <p>Chưa có tài khoản ?<a href="registration.html">Tạo tài khoản</a></p>
+{{--        <p>Chưa có tài khoản ?<a href="registration.html">Tạo tài khoản</a></p>--}}
     </div>
 </div>
 <script src="{{ asset('cms/js/bootstrap.js') }}"></script>

@@ -6,8 +6,13 @@ use App\Http\Controllers\Controller;
 
 class Home extends Controller
 {
-    public function login(){
+    public function getLogin(){
         return view('cms.layouts.login');
+    }
+
+    public function postLogin()
+    {
+
     }
 
     public function index()

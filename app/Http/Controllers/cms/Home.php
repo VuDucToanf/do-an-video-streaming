@@ -15,6 +15,10 @@ class Home extends Controller
 
     }
 
+    public function getLogout(){
+
+    }
+
     public function index()
     {
         return view('cms.home.index');

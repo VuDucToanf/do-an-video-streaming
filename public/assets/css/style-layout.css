@@ -145,3 +145,8 @@ aside.sidebar{
 .main{
     /*overflow-y: scroll;*/
 }
+
+.onTab{
+    background-color: cyan !important;
+    color: darkred !important;
+}

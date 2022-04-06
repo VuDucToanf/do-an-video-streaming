@@ -89,3 +89,33 @@ CREATE TABLE `video` (
 `is_range_of_movies` tinyint(2) DEFAULT NULL,
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+<!-- comment -->
+CREATE TABLE `comment` (
+`id` int(10) NOT NULL AUTO_INCREMENT,
+`user_id` int(10) NOT NULL,
+`video_id` int(10) NOT NULL,
+`parent_id` int(10) DEFAULT NULL,
+`title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+`content` text COLLATE utf8_unicode_ci DEFAULT NULL,
+`status` tinyint(2) DEFAULT NULL,
+`deleted` tinyint(2) DEFAULT NULL,
+`created_time` datetime DEFAULT NULL,
+`updated_time` datetime DEFAULT NULL,
+`created_by` int(10) DEFAULT NULL,
+`updated_by` datetime DEFAULT NULL,
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+<!-- ranking -->
+CREATE TABLE `ranking` (
+`id` int(10) NOT NULL,
+`video_id` int(10) NOT NULL,
+`type` tinyint(2) DEFAULT NULL,
+`view` int(11) DEFAULT NULL,
+`like` int(11) DEFAULT NULL,
+`day` datetime DEFAULT NULL,
+`created_time` datetime DEFAULT NULL,
+`updated_time` datetime DEFAULT NULL,
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

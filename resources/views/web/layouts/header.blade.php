@@ -58,7 +58,7 @@
                             <div class="swiper-container swp-left">
                                 <div class="swiper-wrapper">
                                     <button
-                                        class="swiper-slide bg-white hover:bg-gray-100 text-gray-800 font-semibold border border-gray-400 rounded-full shadow p-[5px]">
+                                        class="swiper-slide bg-white hover:bg-gray-100 text-gray-800 font-semibold border border-gray-400 rounded-full shadow p-[5px] onTab">
                                         Phim bộ
                                     </button>
                                     <button

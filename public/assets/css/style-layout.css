@@ -95,7 +95,6 @@ body::-webkit-scrollbar-thumb:hover {
 
 .title_ranking {
     background-image: linear-gradient(to top, #CCFFFF, #0099FF);
-    border-radius: 5px 5px 0 0;
     height: 70px;
 }
 
@@ -149,4 +148,8 @@ aside.sidebar{
 .onTab{
     background-color: cyan !important;
     color: darkred !important;
+}
+
+.shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
 }

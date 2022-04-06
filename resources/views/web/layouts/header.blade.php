@@ -29,7 +29,7 @@
         display: none;
     }
 </style>
-<div class="header p-[3px] pt-3 bg-[#FFFFFF]">
+<div class="header p-[3px] pt-3 bg-[#FFFFFF] shadow-sm">
     <div class="flex flex-center flex-nowrap">
         <div class="w-[12%] pl-[20px]">
             <a class="flex flex-nowrap" href="{{ route('home') }}">
@@ -137,10 +137,17 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">Logout
+                                <a href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"
+                                >
+                                    Logout
                                     <i class="fas fa-sign-out-alt"></i>
                                 </a>
                             </li>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
                         </ul>
                     </div>
                 </button>

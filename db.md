@@ -47,20 +47,19 @@ PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 <!-- user -->
-CREATE TABLE `user` (
+CREATE TABLE `users` (
 `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-`account_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+`username` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
 `fullname` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
 `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-`mobile` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-`created_time` datetime DEFAULT NULL,
-`updated_time` datetime DEFAULT NULL,
+`created_at` datetime DEFAULT NULL,
+`updated_at` datetime DEFAULT NULL,
 `created_by` int(10) DEFAULT NULL,
 `updated_by` int(10) DEFAULT NULL,
 `cover_version` tinyint(2) DEFAULT NULL,
 `password` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
 PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 <!-- video -->
 CREATE TABLE `video` (

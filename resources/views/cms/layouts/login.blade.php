@@ -24,15 +24,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="log-w3">
     <div class="w3layouts-main">
         <h2>Đăng nhập</h2>
-        <form action="" method="post">
+        @include('cms.elements.alert')
+        <form action="store" method="post">
             <input type="text" class="ggg" name="username" placeholder="USERNAME" required="">
             <input type="password" class="ggg" name="password" placeholder="PASSWORD" required="">
             <span><input type="checkbox" name="remember"/> Remember me</span>
             <h6><a href="#">Quên mật khẩu</a></h6>
             <div class="clearfix"></div>
             <input type="submit" value="Sign In" name="login">
+            @csrf
         </form>
-{{--        <p>Chưa có tài khoản ?<a href="registration.html">Tạo tài khoản</a></p>--}}
     </div>
 </div>
 <script src="{{ asset('cms/js/bootstrap.js') }}"></script>

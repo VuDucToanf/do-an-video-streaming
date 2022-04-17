@@ -47,5 +47,9 @@
 <!-- content body -->
 @yield('content-main')
 <!-- end content body -->
+
+<!-- footer -->
+@extends('web.layouts.footer')
+<!-- end footer -->
 </body>
 </html>

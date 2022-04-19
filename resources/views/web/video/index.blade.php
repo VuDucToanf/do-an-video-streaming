@@ -33,8 +33,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-span-3 my-[20px]">
+                <div class="my-[20px]">
                     <p class="text-3xl font-bold border-b-4 border-[#0099FF]">Bình luận</p>
+                    <div>
+
+                    </div>
                 </div>
             </div>
         </div>

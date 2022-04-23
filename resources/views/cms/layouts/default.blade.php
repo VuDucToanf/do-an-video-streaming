@@ -12,6 +12,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- Custom CSS -->
     <link href="{{ asset('cms/css/style.css') }}" rel='stylesheet' type='text/css' />
     <link href="{{ asset('cms/css/style-responsive.css') }}" rel="stylesheet"/>
+    <!-- add icon link -->
+    <link rel="icon" href="{{ asset('images/logo2.png') }}" type="image/x-icon">
     <!-- font CSS -->
     <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
     <!-- font-awesome icons -->
@@ -25,6 +27,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="{{ asset('cms/js/jquery2.0.3.min.js') }}"></script>
     <script src="{{ asset('cms/js/raphael-min.js') }}"></script>
     <script src="{{ asset('cms/js/morris.js') }}"></script>
+    <!-- load ckeditor -->
+    <script type="text/javascript" src="{{ asset('assets/ckeditor/ckeditor.js') }}"></script>
 </head>
 <body>
 
@@ -34,7 +38,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <!--logo start-->
         <div class="brand">
             <a href="{{ route('cms.home') }}" class="logo">
-                VISITORS
+                video haui
             </a>
             <div class="sidebar-toggle-box">
                 <div class="fa fa-bars"></div>
@@ -262,27 +266,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-book"></i>
-                            <span>UI Elements</span>
+                            <span>Nội dung</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="typography.html">Typography</a></li>
+                            <li><a href="{{ route('cms.video') }}">Quản lý Video</a></li>
                             <li><a href="glyphicon.html">glyphicon</a></li>
                             <li><a href="grids.html">Grids</a></li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="fontawesome.html">
-                            <i class="fa fa-bullhorn"></i>
-                            <span>Font awesome </span>
-                        </a>
-                    </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-th"></i>
-                            <span>Data Tables</span>
+                            <span>Danh mục</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="basic_table.html">Basic Table</a></li>
+                            <li><a href="{{ route('cms.category') }}">Quản lý danh mục</a></li>
                             <li><a href="responsive_table.html">Responsive Table</a></li>
                         </ul>
                     </li>

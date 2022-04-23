@@ -35,7 +35,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 {{--        <p>Chưa có tài khoản ?<a href="registration.html">Tạo tài khoản</a></p>--}}
     </div>
 </div>
-<script src="{{ asset('cms/js/bootstrap.js') }}"></script>
+<script src="{{ asset('cms/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('cms/js/jquery.dcjqaccordion.2.7.js') }}"></script>
 <script src="{{ asset('cms/js/scripts.js') }}"></script>
 <script src="{{ asset('cms/js/jquery.slimscroll.js') }}"></script>
@@ -43,4 +43,3 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="{{ asset('cms/js/flot-chart/excanvas.min.js') }}"></script><![endif]-->
 <script src="{{ asset('cms/js/jquery.scrollTo.js') }}"></script>
 </body>
-</html>

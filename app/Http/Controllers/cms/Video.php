@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\cms;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class Video extends Controller
@@ -39,6 +39,6 @@ class Video extends Controller
         $video->distinct();
         $categories = DB::table('category')->select(['id', 'title']);
         $video = $video->orderBy(\App\Models\Video::TABLE . '.created_time', 'desc')->paginate(20);
-        return view('video.index', compact('breadcrumb', 'video', 'filter', 'categories'));
+        return view('cms.video.index', compact('breadcrumb', 'video', 'filter', 'categories'));
     }
 }

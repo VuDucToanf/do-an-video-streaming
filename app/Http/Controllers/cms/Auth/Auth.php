@@ -6,11 +6,6 @@ use App\Http\Requests\Cms\LoginRequest;
 use App\Models\Admin;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
-use App\Department;
-use App\Http\Requests;
-use Cookie;
-use Tracker;
-use Session;
 
 class Auth extends Controller
 {
@@ -23,6 +18,7 @@ class Auth extends Controller
 
     public function postLogin(Request $request)
     {
+        session_start();
         $username = $request->get('username');
         $password = $request->get('password');
         $remember = $request->get('remember');
@@ -31,7 +27,8 @@ class Auth extends Controller
             ->first();
         if ($user !== null && $user instanceof Admin){
             if($user->password === $password){
-                Session::put('admin', $user);
+//                session()->put('admin', $user);
+                $_SESSION['admin'] = $user;
                 return redirect('/');
             }
         }

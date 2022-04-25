@@ -25,6 +25,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="w3layouts-main">
         <h2>Đăng nhập</h2>
         <form action="" method="post">
+            @csrf
             <input type="text" class="ggg" name="username" placeholder="USERNAME" required="">
             <input type="password" class="ggg" name="password" placeholder="PASSWORD" required="">
             <span><input type="checkbox" name="remember"/> Remember me</span>

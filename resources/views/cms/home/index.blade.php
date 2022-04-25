@@ -1,6 +1,6 @@
 @extends('cms.layouts.default')
 @section('content-main')
-
+<?php dd($admin) ?>
     <section class="wrapper">
         <!-- //market-->
         <div class="market-updates">

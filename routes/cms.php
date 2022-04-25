@@ -12,8 +12,10 @@ Route::get('login', [Auth::class, 'getLogin'])->name('cms.login');
 Route::get('logout', [Auth::class, 'getLogout'])->name('cms.logout');
 Route::post('login',[Auth::class, 'postLogin']);
 
-Route::get('video', [Video::class, 'index'])->name('cms.video');
+Route::group(['middleware' => ['cms']], function () {
+    Route::get('video', [Video::class, 'index'])->name('cms.video');
 
-Route::get('category', [Category::class, 'index'])->name('cms.category');
-Route::get('category/create', [Category::class, 'create'])->name('cms.category.create');
-Route::post('category/create', [Category::class, 'store']);
+    Route::get('category', [Category::class, 'index'])->name('cms.category');
+    Route::get('category/create', [Category::class, 'create'])->name('cms.category.create');
+    Route::post('category/create', [Category::class, 'store']);
+});

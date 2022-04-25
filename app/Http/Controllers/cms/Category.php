@@ -10,6 +10,9 @@ class Category extends Controller
 {
     public function index(Request $request)
     {
+        if(!isset($_SESSION['admin'])){
+            return redirect('/login');
+        }
         $breadcrumb = [
             'title'=>'Quản lý thể loại',
             'params'=>[
@@ -52,7 +55,7 @@ class Category extends Controller
             Request::file("thumb_version")->move('upload/images/category',$photo);
         }
         $parent_id = $request->get('parent_id');
-
+        dd($_SESSION['admin']);
         $data = [
             'title' => $title,
             'description' => $description,

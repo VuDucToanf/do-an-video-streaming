@@ -5,6 +5,7 @@ namespace App\Http\Controllers\cms\Auth;
 use App\Http\Requests\Cms\LoginRequest;
 use App\Models\Admin;
 use Illuminate\Routing\Controller;
+use Illuminate\Http\Request;
 
 class Auth extends Controller
 {
@@ -15,8 +16,9 @@ class Auth extends Controller
         return view('cms.layouts.login');
     }
 
-    public function postLogin(LoginRequest $request)
+    public function postLogin(Request $request)
     {
+        session_start();
         $username = $request->get('username');
         $password = $request->get('password');
         $remember = $request->get('remember');
@@ -25,14 +27,17 @@ class Auth extends Controller
             ->first();
         if ($user !== null && $user instanceof Admin){
             if($user->password === $password){
+//                session()->put('admin', $user);
+                $_SESSION['admin'] = $user;
                 return redirect('/');
             }
         }
     }
 
-    public function getLogout()
+    public function getLogout(LoginRequest $request)
     {
         $this->auth->logout();
-        return redirect('/');
+        $request->session()->forget('admin');
+        return redirect('/login');
     }
 }

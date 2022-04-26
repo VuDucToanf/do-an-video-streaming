@@ -19,5 +19,7 @@ Route::group(['middleware' => ['cms']], function () {
         Route::get('category', [Category::class, 'index'])->name('cms.category');
         Route::get('category/create', [Category::class, 'create'])->name('cms.category.create');
         Route::post('category/create', [Category::class, 'store']);
+    }else{
+
     }
 });

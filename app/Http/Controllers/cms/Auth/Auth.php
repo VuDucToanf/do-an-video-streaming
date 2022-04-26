@@ -13,12 +13,15 @@ class Auth extends Controller
     protected $auth;
 
     public function getLogin(){
-        return view('cms.layouts.login');
+        session_start();
+        if(!isset($_SESSION['admin']))
+            return view('cms.layouts.login');
+        else
+            return redirect('/login');
     }
 
     public function postLogin(Request $request)
     {
-        session_start();
         $username = $request->get('username');
         $password = $request->get('password');
         $remember = $request->get('remember');
@@ -27,7 +30,6 @@ class Auth extends Controller
             ->first();
         if ($user !== null && $user instanceof Admin){
             if($user->password === $password){
-//                session()->put('admin', $user);
                 $_SESSION['admin'] = $user;
                 return redirect('/');
             }

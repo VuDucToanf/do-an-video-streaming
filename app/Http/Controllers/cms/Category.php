@@ -5,6 +5,8 @@ namespace App\Http\Controllers\cms;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Storage;
+use File;
 
 class Category extends Controller
 {
@@ -44,24 +46,28 @@ class Category extends Controller
     {
         $title = $request->get('title');
         $description = $request->get('description');
+        $slug = $request->get('slug');
         $status = 1;
         $deleted = 0;
         $thumb_version = 0;
-        if(Request::hasFile("thumb_version")){
+        if($request->hasFile("thumb_version")){
             $thumb_version = 1;
             //lấy tên file
-            $photo = time()."_".Request::file("thumb_version")->getClientOriginalName();
+            $photo = time()."_".$request->file("thumb_version")->getClientOriginalName();
             //thực hiện upload ảnh
-            Request::file("thumb_version")->move('upload/images/category',$photo);
+            $request->file("thumb_version")->move('upload/images/category',$photo);
         }
-        $parent_id = $request->get('parent_id');
-        dd($_SESSION['admin']);
+        $parent_id = $request->get('parent_id') !== null ? $request->get('parent_id') : 0;
         $data = [
             'title' => $title,
+            'slug' => $slug,
             'description' => $description,
             'thumb_version' => $thumb_version,
             'status' => $status,
-            'deleted' => $deleted
+            'deleted' => $deleted,
+            'parent_id' => $parent_id,
         ];
+        DB::table('category')->insert($data);
+        return redirect('/category');
     }
 }

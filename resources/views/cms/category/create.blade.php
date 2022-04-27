@@ -9,10 +9,17 @@
         </header>
         <div class="panel-body">
             <form class="form-horizontal bucket-form" method="post" enctype="multipart/form-data">
+                @csrf
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Tên thể loại</label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" name="title">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Slug</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="slug">
                     </div>
                 </div>
                 <div class="form-group">

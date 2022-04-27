@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $status
  * @property int $deleted
  * @property int $parent_id
+ * @property string $slug
  *
  */
 class Category extends Model

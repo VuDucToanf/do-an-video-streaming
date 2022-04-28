@@ -23,7 +23,7 @@ Route::group(['middleware' => ['cms']], function () {
         Route::get('category/create', [Category::class, 'create'])->name('cms.category.create');
         Route::post('category/create', [Category::class, 'store']);
         Route::get('category/update/{id}', [Category::class, 'update'])->name('cms.category.update');
-        Route::post('category/update/{id}', [Category::class, 'updatePost']);
+        Route::post('category/update/{id}', [Category::class, 'save']);
         Route::get('category/delete/{id}', [Category::class, 'delete'])->name('cms.category.delete');
     }
 });

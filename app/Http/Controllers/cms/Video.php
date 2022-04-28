@@ -5,6 +5,8 @@ namespace App\Http\Controllers\cms;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Storage;
+use File;
 
 class Video extends Controller
 {
@@ -44,11 +46,49 @@ class Video extends Controller
 
     public function create(Request $request)
     {
-
+        return view('cms.video.create',compact());
     }
 
     public function store(Request $request)
     {
-
+        $name = $request->get('name');
+        $brief = $request->get('brief');
+        $description = $request->get('description');
+        $status = $request->get('status');
+        $published_time = $request->get('pulished_time');
+        $is_full = $request->get('is_full');
+        $is_hot = $request->get('is_hot');
+        $copyright = $request->get('copyright');
+        $thumb_version = 0;
+        if($request->hasFile("thumb_version")){
+            $thumb_version = 1;
+            $fileName = 'image_video_' . $brief . '.jpg';
+            $request->file("thumb_version")->move('upload/images/video',$fileName);
+            $fileData = File::get(public_path('upload/images/video/'.$fileName));
+            Storage::cloud()->put($fileName, $fileData);
+        }
+        if($request->hasFile("file_upload")){
+            $fileName = 'film_video_' . $brief . '.mp4';
+            $request->file('file_upload')->move('upload/video/film',$fileName);
+            $fileData = File::get(public_path('upload/video/film/'.$fileName));
+            Storage::cloud()->put($fileName, $fileData);
+        }
+        $data = [
+            'name' => $name,
+            'brief' => $brief,
+            'description' => $description,
+            'status' => $status,
+            'published_time' => $published_time,
+            'is_full' => $is_full,
+            'is_hot' => $is_hot,
+            'copyright' => $copyright,
+            'thumb_version' => $thumb_version,
+            'created_time' => date('Y-m-d H:i:s'),
+            'updated_time' => date('Y-m-d H:i:s'),
+            'created_by' => $_SESSION['admin']->id,
+            'updated_by' => $_SESSION['admin']->id,
+        ];
+        DB::table('video')->insert($data);
+        return redirect('/video');
     }
 }

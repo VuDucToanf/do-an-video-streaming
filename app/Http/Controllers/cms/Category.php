@@ -45,16 +45,12 @@ class Category extends Controller
 
     public function create()
     {
-        $form_option = [
-            'action'=>'category.store',
-            'method'=>'post',
-        ];
         $categories = \App\Models\Category::query()
             ->where('parent_id',0)
             ->where('status', 1)
             ->where('deleted', 0)
             ->get();
-        return view('cms.category.create',compact('form_option', 'categories'));
+        return view('cms.category.create',compact('categories'));
     }
 
     public function store(Request $request)
@@ -96,7 +92,7 @@ class Category extends Controller
         return view('cms.category.update', ['category' => $category]);
     }
 
-    public function updatePost(Request $request, $id)
+    public function save(Request $request, $id)
     {
         $title = $request->get('title');
         $description = $request->get('description');

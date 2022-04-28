@@ -32,7 +32,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Ảnh thumb</label>
                     <div class="col-sm-6">
-                        <input class="form-control" type="file" name="thumb_version" required>
+                        <input class="form-control" type="file" name="thumb_version">
                     </div>
                 </div>
                 <div class="form-group">
@@ -54,7 +54,7 @@
                             <i class="fa fa-check"></i>
                                 Tạo mới
                         </button>
-                        <button class="btn btn-white btn-sm" type="reset">Làm lại</button>
+                        <button class="btn btn-white btn-sm" type="reset">Reset</button>
                     </div>
                 </div>
             </form>

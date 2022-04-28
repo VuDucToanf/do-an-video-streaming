@@ -9,15 +9,16 @@
                 </div>
                 <div>
                     <table class="table" ui-jq="footable" ui-options='{
-        "paging": {
-          "enabled": true
-        },
-        "filtering": {
-          "enabled": true
-        },
-        "sorting": {
-          "enabled": true
-        }}'>
+                        "paging": {
+                          "enabled": true
+                        },
+                        "filtering": {
+                          "enabled": true
+                        },
+                        "sorting": {
+                          "enabled": true
+                        }}'
+                    >
                         <thead>
                         <tr>
                             <th data-breakpoints="xs">ID</th>
@@ -30,7 +31,7 @@
                         <tr>
                             <form action="{{ route('cms.category') }}" method="get" id="search_form">
                                 <td>
-                                    <input name="id" type="text">
+                                    <input name="id" type="text" value="">
                                 </td>
                                 <td>
                                     <input type="text" name="title">
@@ -52,70 +53,20 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr data-expanded="true">
-                            <td>1</td>
-                            <td>Dennise</td>
-                            <td>Fuhrman</td>
-                            <td>High School History Teacher</td>
-
-                            <td>July 25th 1960</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Elodia</td>
-                            <td>Weisz</td>
-                            <td>Wallpaperer Helper</td>
-
-                            <td>March 30th 1982</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Raeann</td>
-                            <td>Haner</td>
-                            <td>Internal Medicine Nurse Practitioner</td>
-
-                            <td>February 26th 1966</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Junie</td>
-                            <td>Landa</td>
-                            <td>Offbearer</td>
-
-                            <td>March 29th 1966</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>Solomon</td>
-                            <td>Bittinger</td>
-                            <td>Roller Skater</td>
-
-                            <td>September 22nd 1964</td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>Bar</td>
-                            <td>Lewis</td>
-                            <td>Clown</td>
-
-                            <td>August 4th 1991</td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>Usha</td>
-                            <td>Leak</td>
-                            <td>Ships Electronic Warfare Officer</td>
-
-                            <td>November 20th 1979</td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td>Lorriane</td>
-                            <td>Cooke</td>
-                            <td>Technical Services Librarian</td>
-
-                            <td>April 7th 1969</td>
-                        </tr>
+                        @foreach($categories as $item)
+                            <tr>
+                                <td>{!! $item->id !!}</td>
+                                <td>{!! $item->title !!}</td>
+                                <td><?php if($item->status == 0) echo 'Không hoạt động'; else echo 'Hoạt động' ?></td>
+                                <td>{!! $item->parent_id !!}</td>
+                                <td>{{ $item->created_time }}</td>
+                                <td>
+                                    <a href="{{ route('cms.category.view', $item->id) }}" class="btn btn-primary"><i class="fa fa-sticky-note" aria-hidden="true"></i> Xem</a>
+                                    <a href="{{ route('cms.category.update', $item->id) }}" class="btn btn-warning"><i class="fa fa-pencil-square" aria-hidden="true"></i> Sửa</a>
+                                    <a href="{{ route('cms.category.delete', $item->id) }}" class="btn btn-danger" onclick="return confirm('Xóa bản ghi này?')"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa</a>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

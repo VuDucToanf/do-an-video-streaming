@@ -41,4 +41,14 @@ class Video extends Controller
         $video = $video->orderBy(\App\Models\Video::TABLE . '.created_time', 'desc')->paginate(20);
         return view('cms.video.index', compact('breadcrumb', 'video', 'filter', 'categories'));
     }
+
+    public function create(Request $request)
+    {
+
+    }
+
+    public function store(Request $request)
+    {
+
+    }
 }

@@ -21,11 +21,26 @@ class Category extends Controller
                 ['title'=>'Quản lý thể loại','url'=>route('cms.category')],
             ]
         ];
-        $query = \App\Models\Category::query()->with(['child'])->where('parent_id',0)->where('deleted', 0);
+        $query = \App\Models\Category::query()->with(['child'])->where('deleted', 0);
+
+        if($request->id){
+            $query = $query->where('id', $request->id);
+        }
+        if($request->title){
+            $query = $query->where('title', 'like', $request->title);
+        }
+
+        if($request->status){
+            $query = $query->where('status', $request->status);
+        }
+
+        if($request->created_time){
+            $query = $query->where('created_time', '>=', $request->created_time . ' 00:00:00')
+                            ->where('created_time', '<=', $request->created_time . ' 23:59:59');
+        }
+
         $categories = $query->orderBy('created_time','asc')->paginate(20);
-        $total = $categories->total();
-        $params = ['total'=>$total];
-        return view('cms.category.index',compact('breadcrumb','categories','params'));
+        return view('cms.category.index',compact('breadcrumb','categories'));
     }
 
     public function create()
@@ -66,8 +81,49 @@ class Category extends Controller
             'status' => $status,
             'deleted' => $deleted,
             'parent_id' => $parent_id,
+            'created_time' => date('Y-m-d H:i:s'),
+            'updated_time' => date('Y-m-d H:i:s'),
+            'created_by' => $_SESSION['admin']->id,
+            'updated_by' => $_SESSION['admin']->id,
         ];
         DB::table('category')->insert($data);
         return redirect('/category');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $category = DB::table('category')->where('id', $id)->first();
+        return view('cms.category.update', ['category' => $category]);
+    }
+
+    public function updatePost(Request $request, $id)
+    {
+        $title = $request->get('title');
+        $description = $request->get('description');
+        $slug = $request->get('slug');
+        $thumb_version = 0;
+        if($request->hasFile("thumb_version")){
+            //lấy tên file
+            $photo = time()."_".$request->file("thumb_version")->getClientOriginalName();
+            //thực hiện upload ảnh
+            $request->file("thumb_version")->move('upload/images/category',$photo);
+        }
+        $parent_id = $request->get('parent_id') !== null ? $request->get('parent_id') : 0;
+        $data = [
+            'title' => $title,
+            'slug' => $slug,
+            'description' => $description,
+            'thumb_version' => $thumb_version,
+            'parent_id' => $parent_id,
+            'updated_time' => date('Y-m-d H:i:s'),
+            'updated_by' => $_SESSION['admin']->id,
+        ];
+        DB::table('category')->where('id', $id)->update($data);
+        return redirect('/category');
+    }
+
+    public function delete($id)
+    {
+        DB::table("category")->where("id", $id)->delete();
     }
 }

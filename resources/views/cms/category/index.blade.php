@@ -9,115 +9,78 @@
                 </div>
                 <div>
                     <table class="table" ui-jq="footable" ui-options='{
-        "paging": {
-          "enabled": true
-        },
-        "filtering": {
-          "enabled": true
-        },
-        "sorting": {
-          "enabled": true
-        }}'>
+                        "paging": {
+                          "enabled": true
+                        },
+                        "filtering": {
+                          "enabled": true
+                        },
+                        "sorting": {
+                          "enabled": true
+                        }}'
+                    >
                         <thead>
                         <tr>
-                            <th data-breakpoints="xs">ID</th>
-                            <th>Title</th>
-                            <th>Trạng thái</th>
-                            <th data-breakpoints="xs">Thể loại cha</th>
-                            <th data-breakpoints="xs sm md" data-title="DOB">Ngày tạo</th>
-                            <th>Thao tác</th>
+                            <th class="text-center" data-breakpoints="xs">ID</th>
+                            <th class="text-center">Title</th>
+                            <th class="text-center">Trạng thái</th>
+                            <th class="text-center" data-breakpoints="xs">Người tạo</th>
+                            <th class="text-center" data-breakpoints="xs sm md" data-title="DOB">Ngày tạo</th>
+                            <th class="text-center">Thao tác</th>
                         </tr>
                         <tr>
                             <form action="{{ route('cms.category') }}" method="get" id="search_form">
-                                <td>
-                                    <input name="id" type="text">
+                                <td class="text-center">
+                                    <input name="id" type="text" value="">
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     <input type="text" name="title">
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     <select name="status" id="" class="custom-select" style="padding: 4px">
                                         <option value="1">Hoạt động</option>
                                         <option value="0">Không hoạt động</option>
                                     </select>
                                 </td>
-                                <td></td>
-                                <td>
+                                <td class="text-center"></td>
+                                <td class="text-center">
                                     <input type="date" name="created_time">
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     <button type="submit" class="btn btn-info">Tìm kiếm</button>
                                 </td>
                             </form>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr data-expanded="true">
-                            <td>1</td>
-                            <td>Dennise</td>
-                            <td>Fuhrman</td>
-                            <td>High School History Teacher</td>
-
-                            <td>July 25th 1960</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Elodia</td>
-                            <td>Weisz</td>
-                            <td>Wallpaperer Helper</td>
-
-                            <td>March 30th 1982</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Raeann</td>
-                            <td>Haner</td>
-                            <td>Internal Medicine Nurse Practitioner</td>
-
-                            <td>February 26th 1966</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Junie</td>
-                            <td>Landa</td>
-                            <td>Offbearer</td>
-
-                            <td>March 29th 1966</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>Solomon</td>
-                            <td>Bittinger</td>
-                            <td>Roller Skater</td>
-
-                            <td>September 22nd 1964</td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>Bar</td>
-                            <td>Lewis</td>
-                            <td>Clown</td>
-
-                            <td>August 4th 1991</td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>Usha</td>
-                            <td>Leak</td>
-                            <td>Ships Electronic Warfare Officer</td>
-
-                            <td>November 20th 1979</td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td>Lorriane</td>
-                            <td>Cooke</td>
-                            <td>Technical Services Librarian</td>
-
-                            <td>April 7th 1969</td>
-                        </tr>
+                        @foreach($data as $item)
+                            <tr>
+                                <td class="text-center">{!! $item->id !!}</td>
+                                <td class="text-center">{!! $item->title !!}</td>
+                                <td class="text-center"><?php if($item->status == 0) echo 'Không hoạt động'; else echo 'Hoạt động' ?></td>
+                                <td class="text-center">{!! $item->created_by_name !!}</td>
+                                <td class="text-center">{{ $item->created_time }}</td>
+                                <td class="text-center">
+                                    <a href="{{ route('cms.category.view', $item->id) }}" class="btn btn-primary"><i class="fa fa-sticky-note" aria-hidden="true"></i> Xem</a>
+                                    <a href="{{ route('cms.category.update', $item->id) }}" class="btn btn-warning"><i class="fa fa-pencil-square" aria-hidden="true"></i> Sửa</a>
+                                    <a href="{{ route('cms.category.delete', $item->id) }}" class="btn btn-danger" onclick="return confirm('Xóa bản ghi này?')"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa</a>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-5">
+                        <div class="dataTables_info" id="editable_info" role="status" aria-live="polite">
+                            Hiển thị từ 1 đến {!! isset($data)?count($data):0 !!} trong tổng số {!! isset($params['total'])?$params['total']:0 !!} kết quả
+                        </div>
+                    </div>
+                    <div class="col-sm-5 text-right">
+                        {!! $data->render() !!}
+                    </div>
+                    <div class="col-sm-1"></div>
                 </div>
             </div>
         </div>

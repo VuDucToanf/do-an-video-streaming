@@ -13,7 +13,6 @@ class Auth extends Controller
     protected $auth;
 
     public function getLogin(){
-        session_start();
         if(!isset($_SESSION['admin']))
             return view('cms.layouts.login');
         else
@@ -38,8 +37,8 @@ class Auth extends Controller
 
     public function getLogout(LoginRequest $request)
     {
-        $this->auth->logout();
-        $request->session()->forget('admin');
+        echo 1; die;
+        unset($_SESSION['admin']);
         return redirect('/login');
     }
 }

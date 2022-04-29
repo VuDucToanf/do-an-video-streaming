@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $status
  * @property int $deleted
  * @property int $parent_id
+ * @property string $slug
  *
  */
 class Category extends Model
@@ -23,8 +24,4 @@ class Category extends Model
     protected $guarded = [];
     protected $table = 'category';
     const TABLE = 'category';
-
-    public function child(){
-        return $this->hasMany('App\Models\Category',  'parent_id',  'id')->where('deleted', 0);
-    }
 }

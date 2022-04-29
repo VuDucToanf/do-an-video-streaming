@@ -4,7 +4,7 @@ namespace App\Http\Controllers\cms;
 
 use App\Http\Controllers\Controller;
 
-class Home extends Controller
+class HomeController extends Controller
 {
     public function index()
     {

@@ -29,21 +29,11 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Ảnh thumb</label>
+                            <label for="" class="col-sm-3 control-label">Trạng thái</label>
                             <div class="col-sm-6">
-                                <input class="form-control" type="file" name="thumb_version">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Chọn thể loại cha</label>
-                            <div class="col-lg-6">
-                                <select name="parent_id" class="form-control input-lg m-bot15">
-                                    @if(!empty($categories))
-                                        @foreach($categories as $d)
-                                            <option @if(isset($data['parent_id']) && $d->id == $data['parent_id']) selected @endif value="{!! $d->id !!}">{!! $d->name !!}</option>
-                                        @endforeach
-                                    @endif
-                                </select>
+                                <input type="radio" value="1" name="status" @if($category->status == 1) checked @endif> Hoạt động
+                                <br>
+                                <input type="radio" value="0" name="status" @if($category->status == 0) checked @endif> Không hoạt động
                             </div>
                         </div>
                         <div class="form-group">

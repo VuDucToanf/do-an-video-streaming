@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Storage;
 use File;
 
-class Video extends Controller
+class VideoController extends Controller
 {
     public function index(Request $request)
     {

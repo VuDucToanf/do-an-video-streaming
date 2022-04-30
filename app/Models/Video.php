@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+
 /**
  * @property int $id
  * @property string $name
@@ -11,8 +12,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $total_video
  * @property int $thumb_version
  * @property int $view
- * @property int $created_by
- * @property int $updated_by
+ * @property string $created_by_name
+ * @property string $updated_by_name
  * @property string $created_time
  * @property string $updated_time
  * @property int $status
@@ -35,8 +36,7 @@ class Video extends Model
     const TABLE = 'video';
     public $timestamps = false;
 
-    public function category(){
-
-        return $this->belongsToMany('App\Models\Category',  'category_video_relation',  'video_id','category_id');
+    public function categories(){
+        return $this->belongsToMany(Category::class,  'relations_video_category',  'video_id','category_id');
     }
 }

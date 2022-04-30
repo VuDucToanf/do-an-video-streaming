@@ -15,8 +15,12 @@ Route::group(['middleware' => ['cms']], function () {
     if(isset($_SESSION['admin'])) {
         Route::get('', [HomeController::class, 'index'])->name('cms.home');
         Route::get('video', [VideoController::class, 'index'])->name('cms.video');
+        Route::get('video/show/{id}', [VideoController::class, 'show'])->name('cms.video.show');
         Route::get('video/create', [VideoController::class, 'create'])->name('cms.video.create');
         Route::post('video/create', [VideoController::class, 'store']);
+        Route::get('video/update/{id}', [VideoController::class, 'update'])->name('cms.video.update');
+        Route::post('video/save/{id}', [VideoController::class, 'save']);
+        Route::get('video/delete/{id}', [VideoController::class, 'delete'])->name('cms.video.delete');
 
         Route::get('category', [CategoryController::class, 'index'])->name('cms.category');
         Route::get('category/view', [CategoryController::class, 'view'])->name('cms.category.view');

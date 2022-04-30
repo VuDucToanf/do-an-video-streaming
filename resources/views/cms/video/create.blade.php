@@ -43,27 +43,33 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="col-sm-3 control-label">Thể loại</label>
+                            <div class="col-sm-6">
+                                @include('cms.elements.form.choose_multi_item_category',['name'=>'categorys', 'text_hint' => 'Chọn thể loại', 'datas'=> $categories, 'selected'=>isset($categories_id_selected)?$categories_id_selected:[]])
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="col-sm-3 control-label">Trạng thái hoạt động</label>
                             <div class="col-sm-6">
-                                <input type="checkbox" name="status" value="1">
+                                <input type="checkbox" name="status">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Thời gian phát hành</label>
                             <div class="col-sm-6">
-                                <input type="datetime-local" class="form-control" name="brif">
+                                <input type="datetime-local" class="form-control" name="published_time">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Đã hoàn thành</label>
                             <div class="col-sm-6">
-                                <input type="checkbox" name="is_full" value="0">
+                                <input type="checkbox" name="is_full">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Phim hot</label>
                             <div class="col-sm-6">
-                                <input type="checkbox" name="is_hot" value="0">
+                                <input type="checkbox" name="is_hot">
                             </div>
                         </div>
                         <div class="form-group">

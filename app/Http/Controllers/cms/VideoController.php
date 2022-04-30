@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\cms;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Storage;
+use App\Models\Category;
+use App\Models\RelationsCategoryVideo;
+use App\Models\Video;
 use File;
+use Illuminate\Http\Request;
+use Storage;
 
 class VideoController extends Controller
 {
@@ -18,7 +20,7 @@ class VideoController extends Controller
                 ['title' => 'Quản lý Video', 'url' => '/video'],
             ]
         ];
-        $video = \App\Models\Video::query()->with('categories');
+        $data = \App\Models\Video::query()->with('categories');
         $filter = [];
         $filter['status'] = $request->get('status', '');
         $filter['id'] = $request->get('id', '');
@@ -26,27 +28,28 @@ class VideoController extends Controller
         $filter['created_time'] = $request->get('created_time', '');
 
         if($filter['status']) {
-            $video->where('status',$filter['status']);
+            $data->where('status',$filter['status']);
         }
         if($filter['id']) {
-            $video->where(\App\Models\Video::TABLE .'.id',$filter['id']);
+            $data->where(\App\Models\Video::TABLE .'.id',$filter['id']);
         }
         if($filter['created_time']) {
-            $video->where(\App\Models\Video::TABLE .'.created_time',$filter['created_time']);
+            $data->where(\App\Models\Video::TABLE .'.created_time',$filter['created_time']);
         }
         if($filter['name']) {
-            $video->where('name', 'like', "%{$filter['name']}%");
+            $data->where('name', 'like', "%{$filter['name']}%");
         }
 
-        $video->distinct();
-        $categories = DB::table('category')->select(['id', 'title']);
-        $video = $video->orderBy(\App\Models\Video::TABLE . '.created_time', 'desc')->paginate(20);
-        return view('cms.video.index', compact('breadcrumb', 'video', 'filter', 'categories'));
+        $total = $data->count('id');
+        $data = $data->orderBy('id', 'desc')->paginate(10);
+        $params = ['total' => $total];
+        return view('cms.video.index', compact('breadcrumb', 'data', 'filter', 'params'));
     }
 
-    public function create(Request $request)
+    public function create()
     {
-        return view('cms.video.create',compact());
+        $categories = Category::query()->where('status', 1)->where('deleted', 0)->get();
+        return view('cms.video.create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -54,14 +57,14 @@ class VideoController extends Controller
         $name = $request->get('name');
         $brief = $request->get('brief');
         $description = $request->get('description');
-        $status = $request->get('status');
-        $published_time = $request->get('pulished_time');
-        $is_full = $request->get('is_full');
-        $is_hot = $request->get('is_hot');
+        $status = $request->get('status') ? 1 : 0;
+        $published_time = $request->get('published_time');
+        $is_full = $request->get('is_full') ? 1 : 0;
+        $is_hot = $request->get('is_hot') ? 1 : 0;
         $copyright = $request->get('copyright');
+        $categorys = $request->get('categorys', []);
         $thumb_version = 0;
         if($request->hasFile("thumb_version")){
-            $thumb_version = 1;
             $fileName = 'image_video_' . $brief . '.jpg';
             $request->file("thumb_version")->move('upload/images/video',$fileName);
             $fileData = File::get(public_path('upload/images/video/'.$fileName));
@@ -85,10 +88,15 @@ class VideoController extends Controller
             'thumb_version' => $thumb_version,
             'created_time' => date('Y-m-d H:i:s'),
             'updated_time' => date('Y-m-d H:i:s'),
-            'created_by' => $_SESSION['admin']->id,
-            'updated_by' => $_SESSION['admin']->id,
+            'created_by_name' => $_SESSION['admin']->username,
+            'updated_by_name' => $_SESSION['admin']->username,
         ];
-        DB::table('video')->insert($data);
+        $odm = new Video();
+        $clone = $odm->create($data);
+        if(!$clone || !$clone instanceof Video) {
+            return redirect()->back()->withErrors('Dữ liệu cập nhật không hợp lệ');
+        }
+        RelationsCategoryVideo::relateFromCategory($clone->id, $categorys);
         return redirect('/video');
     }
 }

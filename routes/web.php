@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\web\Home;
-use \App\Http\Controllers\web\Category;
-use \App\Http\Controllers\web\Video;
+use \App\Http\Controllers\web\HomeController;
+use \App\Http\Controllers\web\CategoryController;
+use \App\Http\Controllers\web\VideoController;
 
-Route::get('/', [Home::class,'index'])->name('home');
-Route::get('phim-bo', [Category::class,'phimBo'])->name('phim-bo');
-Route::get('video', [Video::class,'index'])->name('video');
+Route::get('/', [HomeController::class,'index'])->name('home');
+Route::get('phim-bo', [CategoryController::class,'phimBo'])->name('phim-bo');
+Route::get('video', [VideoController::class,'index'])->name('video');

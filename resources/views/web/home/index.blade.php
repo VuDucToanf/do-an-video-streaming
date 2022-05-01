@@ -56,56 +56,14 @@
                     </span>
                     </div>
                     <div class="content_ranking mt-3 px-2 overflow-x-hidden h-[515px]">
-                        <div class="grid grid-cols-12 mb-5">
-                            <img class="col-span-2 m-auto" src="{{ asset('images/ranking/1.png') }}" alt="">
-                            <img class="col-span-3 m-auto" src="{{ asset('images/img-film/1.jpg') }}" alt="" width="100">
-                            <span class="col-span-7 m-auto">Day Dứt Nỗi Đau - Mr. Siro ft Sirocon</span>
-                        </div>
-                        <div class="grid grid-cols-12 mb-5">
-                            <img class="col-span-2 m-auto" src="{{ asset('images/ranking/2.png') }}" alt="">
-                            <img class="col-span-3 m-auto" src="{{ asset('images/img-film/1.jpg') }}" alt="" width="100">
-                            <span class="col-span-7 m-auto">Day Dứt Nỗi Đau - Mr. Siro ft Sirocon</span>
-                        </div>
-                        <div class="grid grid-cols-12 mb-5">
-                            <img class="col-span-2 m-auto" src="{{ asset('images/ranking/3.png') }}" alt="">
-                            <img class="col-span-3 m-auto" src="{{ asset('images/img-film/1.jpg') }}" alt="" width="100">
-                            <span class="col-span-7 m-auto">Day Dứt Nỗi Đau - Mr. Siro ft Sirocon</span>
-                        </div>
-                        <div class="grid grid-cols-12 mb-5">
-                            <img class="col-span-2 m-auto" src="{{ asset('images/ranking/4.png') }}" alt="">
-                            <img class="col-span-3 m-auto" src="{{ asset('images/img-film/1.jpg') }}" alt="" width="100">
-                            <span class="col-span-7 m-auto">Day Dứt Nỗi Đau - Mr. Siro ft Sirocon</span>
-                        </div>
-                        <div class="grid grid-cols-12 mb-5">
-                            <img class="col-span-2 m-auto" src="{{ asset('images/ranking/5.png') }}" alt="">
-                            <img class="col-span-3 m-auto" src="{{ asset('images/img-film/1.jpg') }}" alt="" width="100">
-                            <span class="col-span-7 m-auto">Day Dứt Nỗi Đau - Mr. Siro ft Sirocon</span>
-                        </div>
-                        <div class="grid grid-cols-12 mb-5">
-                            <img class="col-span-2 m-auto" src="{{ asset('images/ranking/6.png') }}" alt="">
-                            <img class="col-span-3 m-auto" src="{{ asset('images/img-film/1.jpg') }}" alt="" width="100">
-                            <span class="col-span-7 m-auto">Day Dứt Nỗi Đau - Mr. Siro ft Sirocon</span>
-                        </div>
-                        <div class="grid grid-cols-12 mb-5">
-                            <img class="col-span-2 m-auto" src="{{ asset('images/ranking/7.png') }}" alt="">
-                            <img class="col-span-3 m-auto" src="{{ asset('images/img-film/1.jpg') }}" alt="" width="100">
-                            <span class="col-span-7 m-auto">Day Dứt Nỗi Đau - Mr. Siro ft Sirocon</span>
-                        </div>
-                        <div class="grid grid-cols-12 mb-5">
-                            <img class="col-span-2 m-auto" src="{{ asset('images/ranking/8.png') }}" alt="">
-                            <img class="col-span-3 m-auto" src="{{ asset('images/img-film/1.jpg') }}" alt="" width="100">
-                            <span class="col-span-7 m-auto">Day Dứt Nỗi Đau - Mr. Siro ft Sirocon</span>
-                        </div>
-                        <div class="grid grid-cols-12 mb-5">
-                            <img class="col-span-2 m-auto" src="{{ asset('images/ranking/9.png') }}" alt="">
-                            <img class="col-span-3 m-auto" src="{{ asset('images/img-film/1.jpg') }}" alt="" width="100">
-                            <span class="col-span-7 m-auto">Day Dứt Nỗi Đau - Mr. Siro ft Sirocon</span>
-                        </div>
-                        <div class="grid grid-cols-12 mb-5">
-                            <img class="col-span-2 m-auto" src="{{ asset('images/ranking/10.png') }}" alt="">
-                            <img class="col-span-3 m-auto" src="{{ asset('images/img-film/1.jpg') }}" alt="" width="100">
-                            <span class="col-span-7 m-auto">Day Dứt Nỗi Đau - Mr. Siro ft Sirocon</span>
-                        </div>
+                        @foreach($video_ranking as $key => $value)
+                            <?php $i = $key + 1; ?>
+                            <a href="#" class="grid grid-cols-12 mb-5">
+                                <img class="col-span-2 m-auto" src="{{ asset('images/ranking/' . $i . '.png') }}" alt="">
+                                <img class="col-span-3 m-auto" src="{{ asset('upload/images/video/image_video_' . $value->brief . '.jpg') }}" alt="" style="width: 100px; height: 100px;">
+                                <span class="col-span-7" style="line-height: 100px;">{{ $value->name }}</span>
+                            </a>
+                        @endforeach
                     </div>
                 </div>
             </div>

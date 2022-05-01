@@ -7,4 +7,4 @@ use \App\Http\Controllers\web\VideoController;
 
 Route::get('/', [HomeController::class,'index'])->name('home');
 Route::get('phim-bo', [CategoryController::class,'phimBo'])->name('phim-bo');
-Route::get('video', [VideoController::class,'index'])->name('video');
+Route::get('video/{brief}', [VideoController::class,'show'])->name('video');

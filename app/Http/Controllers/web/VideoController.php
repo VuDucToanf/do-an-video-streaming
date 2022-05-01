@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\web;
 
 use App\Http\Controllers\Controller;
+use App\Models\Video;
 
 class VideoController extends Controller
 {
-    public function index()
+    public function show($brief)
     {
-        return view('web.video.index');
+        $video = Video::query()->where('brief', $brief)->first();
+        return view('web.video.index', compact('video'));
     }
 }

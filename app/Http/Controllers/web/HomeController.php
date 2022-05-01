@@ -9,6 +9,7 @@ class HomeController extends Controller
 {
     public function index(){
         $video_ranking = Video::query()->where('status', 1)->where('deleted', 0)->orderByDesc('view')->limit(10)->offset(0)->get();
-        return view('web.home.index', compact('video_ranking'));
+        $categories = \App\Models\Category::query()->where('status', 1)->where('deleted', 0)->get();
+        return view('web.home.index', compact('video_ranking', 'categories'));
     }
 }

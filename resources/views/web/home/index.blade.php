@@ -58,100 +58,42 @@
                     <div class="content_ranking mt-3 px-2 overflow-x-hidden h-[515px]">
                         @foreach($video_ranking as $key => $value)
                             <?php $i = $key + 1; ?>
-                            <a href="#" class="grid grid-cols-12 mb-5">
+                            <a href="{{ route('video', $value->brief) }}" class="grid grid-cols-12 mb-5">
                                 <img class="col-span-2 m-auto" src="{{ asset('images/ranking/' . $i . '.png') }}" alt="">
-                                <img class="col-span-3 m-auto" src="{{ asset('upload/images/video/image_video_' . $value->brief . '.jpg') }}" alt="" style="width: 100px; height: 100px;">
-                                <span class="col-span-7" style="line-height: 100px;">{{ $value->name }}</span>
+                                <img class="col-span-3 m-auto" src="{{ asset('upload/images/video/image_video_' . $value->brief . '.jpg') }}" alt="">
+                                <span class="col-span-7 m-auto">{{ $value->name }}</span>
                             </a>
                         @endforeach
                     </div>
                 </div>
             </div>
             <div class="list_film">
-                <div class="ele_list mt-5">
-                    <div class="flex justify-between mb-3">
-                        <p class="text-3xl font-bold border-b-4 border-[#0099FF]">Phim bộ</p>
-                        <a href="#">Xem tất cả</a>
-                    </div>
-                    <div class="grid grid-cols-5 gap-5">
-                        <div class="film-col">
-                            <img src="{{ asset('images/img-film/1.jpg') }}" alt="">
-                            <p class="title-film text-xl">Day Dứt Nỗi Đau - Mr. Siro ft Sirocon</p>
+                @foreach($categories as $item)
+                    <div class="ele_list mt-5">
+                        <div class="flex justify-between mb-3">
+                            <p class="text-3xl font-bold border-b-4 border-[#0099FF]">{{ $item->title }}</p>
+                            <a href="#">Xem tất cả</a>
                         </div>
-                        <div>
-                            <img src="{{ asset('images/img-film/1.jpg') }}" class="film-thumb" alt="">
-                            <p class="title-film text-xl">Day Dứt Nỗi Đau - Mr. Siro ft Sirocon</p>
-                        </div>
-                        <div>
-                            <img src="{{ asset('images/img-film/1.jpg') }}" class="film-thumb" alt="">
-                            <p class="title-film text-xl">Day Dứt Nỗi Đau - Mr. Siro ft Sirocon</p>
-                        </div>
-                        <div>
-                            <img src="{{ asset('images/img-film/1.jpg') }}" class="film-thumb" alt="">
-                            <p class="title-film text-xl">Day Dứt Nỗi Đau - Mr. Siro ft Sirocon</p>
-                        </div>
-                        <div>
-                            <img src="{{ asset('images/img-film/1.jpg') }}" class="film-thumb" alt="">
-                            <p class="title-film text-xl">Day Dứt Nỗi Đau - Mr. Siro ft Sirocon</p>
+                        <div class="grid grid-cols-5 gap-5">
+                            <?php
+                                $videos_in_category = \Illuminate\Support\Facades\DB::table('video')
+                                                        ->join('relations_video_category', 'video.id', '=', 'relations_video_category.video_id')
+                                                        ->where('relations_video_category.category_id', '=', $item->id)
+                                                        ->where('video.status', 1)
+                                                        ->where('video.deleted', 0)
+                                                        ->limit(5)
+                                                        ->offset(0)
+                                                        ->get();
+                                foreach($videos_in_category as $value){
+                            ?>
+                                <div class="film-col">
+                                    <img src="{{ asset('upload/images/video/image_video_' . $value->brief . '.jpg') }}" alt="" style="width: 400px;">
+                                    <p class="title-film text-xl">{{ $value->name }}</p>
+                                </div>
+                            <?php } ?>
                         </div>
                     </div>
-                </div>
-                <div class="ele_list mt-5">
-                    <div class="flex justify-between mb-3">
-                        <p class="text-3xl font-bold border-b-4 border-[#0099FF]">Phim chiếu rạp</p>
-                        <a href="#">Xem tất cả</a>
-                    </div>
-                    <div class="grid grid-cols-5 gap-5">
-                        <div class="film-col">
-                            <img src="{{ asset('images/img-film/1.jpg') }}" alt="">
-                            <p class="title-film text-xl">Day Dứt Nỗi Đau - Mr. Siro ft Sirocon</p>
-                        </div>
-                        <div>
-                            <img src="{{ asset('images/img-film/1.jpg') }}" class="film-thumb" alt="">
-                            <p class="title-film text-xl">Day Dứt Nỗi Đau - Mr. Siro ft Sirocon</p>
-                        </div>
-                        <div>
-                            <img src="{{ asset('images/img-film/1.jpg') }}" class="film-thumb" alt="">
-                            <p class="title-film text-xl">Day Dứt Nỗi Đau - Mr. Siro ft Sirocon</p>
-                        </div>
-                        <div>
-                            <img src="{{ asset('images/img-film/1.jpg') }}" class="film-thumb" alt="">
-                            <p class="title-film text-xl">Day Dứt Nỗi Đau - Mr. Siro ft Sirocon</p>
-                        </div>
-                        <div>
-                            <img src="{{ asset('images/img-film/1.jpg') }}" class="film-thumb" alt="">
-                            <p class="title-film text-xl">Day Dứt Nỗi Đau - Mr. Siro ft Sirocon</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="ele_list mt-5">
-                    <div class="flex justify-between mb-3">
-                        <p class="text-3xl font-bold border-b-4 border-[#0099FF]">Phim Việt Nam</p>
-                        <a href="#">Xem tất cả</a>
-                    </div>
-                    <div class="grid grid-cols-5 gap-5">
-                        <div class="film-col">
-                            <img src="{{ asset('images/img-film/1.jpg') }}" alt="">
-                            <p class="title-film text-xl">Day Dứt Nỗi Đau - Mr. Siro ft Sirocon</p>
-                        </div>
-                        <div>
-                            <img src="{{ asset('images/img-film/1.jpg') }}" class="film-thumb" alt="">
-                            <p class="title-film text-xl">Day Dứt Nỗi Đau - Mr. Siro ft Sirocon</p>
-                        </div>
-                        <div>
-                            <img src="{{ asset('images/img-film/1.jpg') }}" class="film-thumb" alt="">
-                            <p class="title-film text-xl">Day Dứt Nỗi Đau - Mr. Siro ft Sirocon</p>
-                        </div>
-                        <div>
-                            <img src="{{ asset('images/img-film/1.jpg') }}" class="film-thumb" alt="">
-                            <p class="title-film text-xl">Day Dứt Nỗi Đau - Mr. Siro ft Sirocon</p>
-                        </div>
-                        <div>
-                            <img src="{{ asset('images/img-film/1.jpg') }}" class="film-thumb" alt="">
-                            <p class="title-film text-xl">Day Dứt Nỗi Đau - Mr. Siro ft Sirocon</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\cms;
 
 use App\Http\Controllers\Controller;
+use File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Storage;
-use File;
 
 class CategoryController extends Controller
 {

@@ -4,8 +4,8 @@ namespace App\Http\Controllers\cms\Auth;
 
 use App\Http\Requests\Cms\LoginRequest;
 use App\Models\Admin;
-use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class Auth extends Controller
 {

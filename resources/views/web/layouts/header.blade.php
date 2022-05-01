@@ -1,3 +1,6 @@
+<?php
+    $categories = \App\Models\Category::query()->where('status', 1)->where('deleted', 0)->get();
+?>
 <style>
     .title-cate .swiper-slide {
         width: auto;
@@ -57,54 +60,12 @@
                         <div class="relative">
                             <div class="swiper-container swp-left">
                                 <div class="swiper-wrapper">
-                                    <button
-                                        class="swiper-slide bg-white hover:bg-gray-100 text-gray-800 font-semibold border border-gray-400 rounded-full shadow p-[5px] onTab">
-                                        Phim bộ
-                                    </button>
-                                    <button
-                                        class="swiper-slide bg-white hover:bg-gray-100 text-gray-800 font-semibold border border-gray-400 rounded-full shadow p-[5px]">
-                                        Phim lẻ
-                                    </button>
-                                    <button
-                                        class="swiper-slide bg-white hover:bg-gray-100 text-gray-800 font-semibold border border-gray-400 rounded-full shadow p-[5px]">
-                                        Phim Việt Nam
-                                    </button>
-                                    <button
-                                        class="swiper-slide bg-white hover:bg-gray-100 text-gray-800 font-semibold border border-gray-400 rounded-full shadow p-[5px]">
-                                        Phim chiếu rạp
-                                    </button>
-                                    <button
-                                        class="swiper-slide bg-white hover:bg-gray-100 text-gray-800 font-semibold border border-gray-400 rounded-full shadow p-[5px]">
-                                        Xếp hạng tuần
-                                    </button>
-                                    <button
-                                        class="swiper-slide bg-white hover:bg-gray-100 text-gray-800 font-semibold border border-gray-400 rounded-full shadow p-[5px]">
-                                        Phim kinh dị
-                                    </button>
-                                    <button
-                                        class="swiper-slide bg-white hover:bg-gray-100 text-gray-800 font-semibold border border-gray-400 rounded-full shadow p-[5px]">
-                                        Phim hoạt hình
-                                    </button>
-                                    <button
-                                        class="swiper-slide bg-white hover:bg-gray-100 text-gray-800 font-semibold border border-gray-400 rounded-full shadow p-[5px]">
-                                        Phim cổ trang
-                                    </button>
-                                    <button
-                                        class="swiper-slide bg-white hover:bg-gray-100 text-gray-800 font-semibold border border-gray-400 rounded-full shadow p-[5px]">
-                                        Phim thiếu nhi
-                                    </button>
-                                    <button
-                                        class="swiper-slide bg-white hover:bg-gray-100 text-gray-800 font-semibold border border-gray-400 rounded-full shadow p-[5px]">
-                                        Phim hài
-                                    </button>
-                                    <button
-                                        class="swiper-slide bg-white hover:bg-gray-100 text-gray-800 font-semibold border border-gray-400 rounded-full shadow p-[5px]">
-                                        Phim xuyên không
-                                    </button>
-                                    <button
-                                        class="swiper-slide bg-white hover:bg-gray-100 text-gray-800 font-semibold border border-gray-400 rounded-full shadow p-[5px]">
-                                        Phim tình cảm
-                                    </button>
+                                    @foreach($categories as $item)
+                                        <button
+                                            class="swiper-slide bg-white hover:bg-gray-100 text-gray-800 font-semibold border border-gray-400 rounded-full shadow p-[5px] onTab">
+                                            {{ $item->title }}
+                                        </button>
+                                    @endforeach
                                 </div>
                             </div>
                             <!-- Add Arrows -->

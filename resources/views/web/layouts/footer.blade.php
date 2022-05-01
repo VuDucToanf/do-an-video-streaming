@@ -1,4 +1,4 @@
-<div class="footer grid grid-cols-6 gap-4 py-[20px] px-[100px] bg-[#BE5A4B] text-[#ebebeb]">
+<div class="footer grid grid-cols-6 gap-4 py-[20px] px-[100px] bg-[#BE5A4B] text-[#ebebeb] mt-[20px]">
     <div class="info col-span-2">
         <a class="flex flex-nowrap" href="{{ route('home') }}">
             <img class="" src="{{ asset('images/logo2.png') }}" alt="" width="100">

@@ -32,6 +32,7 @@
     <style>
         body{
             overflow-x: hidden;
+            background-color: #F8F8F8;
         }
     </style>
 </head>

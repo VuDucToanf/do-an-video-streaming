@@ -6,7 +6,7 @@
             <div class="menu grid gap-2">
                 <div class="col-span-9">
                     <video class="w-full" id="player" playsinline controls>
-                        <source src="http://dev.doanhaui.vn/videos/video-720p.mp4" type="video/mp4" size="720"/>
+                        <source src="{{ asset('upload/video/film/film_video_' . $video->brief . '.mp4') }}" type="video/mp4" size="1080"/>
                     </video>
                     <div class="film_description grid grid-cols-12 gap-2">
                         <div class="col-span-6 title">

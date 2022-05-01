@@ -74,7 +74,9 @@
                             <tr>
                                 <td class="text-center">{!! $item->id !!}</td>
                                 <td class="text-center">{!! $item->name !!}</td>
-                                <td class="text-center"></td>
+                                <td class="text-center">
+                                    <img src="{{ asset('/upload/images/video/image_video_' . $item->brief . '.jpg') }}" alt="" width="100">
+                                </td>
                                 <td class="text-center">{!! $item->view !!}</td>
                                 <td class="text-center"><?php if($item->status == 0) echo 'Không hoạt động'; else echo 'Hoạt động' ?></td>
                                 <td class="text-center">{{ $item->created_time }}</td>
@@ -83,7 +85,7 @@
                                 <td class="text-center"><?php if($item->is_full == 0) echo 'Chưa hoàn thành'; else echo 'Đã hoàn thành' ?></td>
                                 <td class="text-center">
                                     <a href="{{ route('cms.video.show', $item->id) }}" class="btn btn-primary"><i class="fa fa-sticky-note" aria-hidden="true"></i> Xem</a>
-                                    <a href="{{ route('cms.video.update', $item->id) }}" class="btn btn-warning"><i class="fa fa-pencil-square" aria-hidden="true"></i> Sửa</a>
+                                    <a href="{{ route('cms.video.edit', $item->id) }}" class="btn btn-warning"><i class="fa fa-pencil-square" aria-hidden="true"></i> Sửa</a>
                                     <a href="{{ route('cms.video.delete', $item->id) }}" class="btn btn-danger" onclick="return confirm('Xóa bản ghi này?')"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa</a>
                                 </td>
                             </tr>

@@ -18,8 +18,8 @@ Route::group(['middleware' => ['cms']], function () {
         Route::get('video/show/{id}', [VideoController::class, 'show'])->name('cms.video.show');
         Route::get('video/create', [VideoController::class, 'create'])->name('cms.video.create');
         Route::post('video/create', [VideoController::class, 'store']);
-        Route::get('video/update/{id}', [VideoController::class, 'update'])->name('cms.video.update');
-        Route::post('video/save/{id}', [VideoController::class, 'save']);
+        Route::get('video/edit/{id}', [VideoController::class, 'edit'])->name('cms.video.edit');
+        Route::post('video/edit/{id}', [VideoController::class, 'update']);
         Route::get('video/delete/{id}', [VideoController::class, 'delete'])->name('cms.video.delete');
 
         Route::get('category', [CategoryController::class, 'index'])->name('cms.category');

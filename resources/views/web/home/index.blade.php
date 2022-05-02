@@ -72,7 +72,7 @@
                     <div class="ele_list mt-5">
                         <div class="flex justify-between mb-3">
                             <p class="text-3xl font-bold border-b-4 border-[#0099FF]">{{ $item->title }}</p>
-                            <a href="#">Xem tất cả</a>
+                            <a href="{{ route('category', $item->slug) }}">Xem tất cả</a>
                         </div>
                         <div class="grid grid-cols-5 gap-5">
                             <?php
@@ -86,10 +86,10 @@
                                                         ->get();
                                 foreach($videos_in_category as $value){
                             ?>
-                                <div class="film-col">
+                                <a href="{{ route('video', $value->brief) }}" class="film-col">
                                     <img src="{{ asset('upload/images/video/image_video_' . $value->brief . '.jpg') }}" alt="" style="width: 400px;">
                                     <p class="title-film text-xl">{{ $value->name }}</p>
-                                </div>
+                                </a>
                             <?php } ?>
                         </div>
                     </div>

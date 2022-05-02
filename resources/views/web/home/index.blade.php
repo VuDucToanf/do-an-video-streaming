@@ -89,6 +89,7 @@
                                 <a href="{{ route('video', $value->brief) }}" class="film-col">
                                     <img src="{{ asset('upload/images/video/image_video_' . $value->brief . '.jpg') }}" alt="" style="width: 400px;">
                                     <p class="title-film text-xl">{{ $value->name }}</p>
+                                    <i class="icon-play"></i>
                                 </a>
                             <?php } ?>
                         </div>

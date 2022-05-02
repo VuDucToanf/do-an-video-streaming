@@ -31,6 +31,12 @@
     .swiper-button-prev:after, .swiper-rtl .swiper-button-next:after {
         display: none;
     }
+    .smart-search{position: absolute; width: 92%; background: white; height: 350px; overflow: scroll; z-index: 2; top: 40px; display: none;}
+    .smart-search ul{padding: 0px; margin: 0px; list-style: none;}
+    .smart-search ul li{border-bottom: 1px solid #dddddd; display: flex; justify-content: start; margin-top: 2px;}
+    .smart-search ul li a{text-decoration: none; color: DarkCyan; font-style: normal; text-transform: lowercase;}
+    .smart-search ul li a:hover{color: DarkGreen;}
+    .smart-search img{width: 70px; margin-right: 5px;}
 </style>
 <div class="header p-[3px] pt-3 bg-[#FFFFFF]">
     <div class="flex flex-center flex-nowrap">
@@ -43,17 +49,22 @@
             <div class="flex justify-start">
                 <div class="input-group relative flex flex-nowrap items-stretch rounded mb-[3px] w-[30%]">
                     <input type="search"
-                           class="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-[#FFFF00] focus:outline-none"
-                           placeholder="Tìm kiếm tên phim hoặc tên tác giả" aria-label="Search" aria-describedby="button-addon2">
-                    <span
+                           id="key"
+                           class="input-control form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-[#FFFF00] focus:outline-none"
+                           placeholder="Nhập tên bộ phim bạn muốn tìm" aria-label="Search" aria-describedby="button-addon2" autocomplete="off">
+                    <button
                         class="input-group-text flex items-center px-3 py-1.5 text-base font-normal text-gray-700 text-center whitespace-nowrap rounded"
-                        id="basic-addon2">
+                        id="btnSearch">
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="w-4"
                              role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                           <path fill="currentColor"
                                 d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
                         </svg>
-                      </span>
+                    </button>
+                    <div class="smart-search">
+                        <ul>
+                        </ul>
+                    </div>
                 </div>
                 <div class="box-cate__content w-[65%] my-auto">
                     <div class="title-cate">
@@ -138,4 +149,22 @@
         $('div.swiper-button-next').attr("style", "display: none");
         $('div.swiper-button-prev').attr("style", "display: none");
     }
+    $(document).ready(function(){
+        $("#btnSearch").click(function(){
+            var key = $("#key").val();
+            location.href = "<?php echo request()->root() ?>/video/search/q-"+key;
+        });
+        $(".input-control").keyup(function(){
+            var strKey = $("#key").val();
+            if(strKey.trim() == "")
+                $(".smart-search").attr("style", "display: none");
+            else{
+                $(".smart-search").attr("style", "display: block");
+                $.get("<?php echo request()->root() ?>/search/q-"+strKey, function(data){
+                    $(".smart-search ul").empty();
+                    $(".smart-search ul").append(data);
+                });
+            }
+        });
+    });
 </script>

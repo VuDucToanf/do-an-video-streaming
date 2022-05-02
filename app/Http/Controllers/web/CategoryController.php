@@ -5,11 +5,11 @@ namespace App\Http\Controllers\web;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Video;
-use Illuminate\Http\Client\Request;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function show($slug)
+    public function show($slug, Request $request)
     {
         $category = Category::query()->where('slug', $slug)->first();
         $categories = Category::query()->where('status', 1)->where('deleted', 0)->get();
@@ -17,8 +17,18 @@ class CategoryController extends Controller
             ->join('relations_video_category', 'video.id', '=', 'relations_video_category.video_id')
             ->where('relations_video_category.category_id', '=', $category->id)
             ->where('video.status', 1)
-            ->where('video.deleted', 0)
-            ->paginate(20);
+            ->where('video.deleted', 0);
+        if($request->get('order'))
+        {
+            if($request->get('order') == 'view_desc')
+                $data = $data->orderBy('view', 'desc');
+            else if($request->get('order') == 'view_asc')
+                $data = $data->orderBy('view');
+            else if($request->get('order') == 'published_time_desc')
+                $data = $data->orderBy('published_time', 'desc');
+            else $data = $data->orderBy('published_time');
+        }
+        $data = $data->paginate(20);
         return view('web.category.show', compact('category', 'data', 'categories'));
     }
 }

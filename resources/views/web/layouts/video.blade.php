@@ -38,10 +38,6 @@
 @extends('web.layouts.header')
 <!-- end header -->
 
-<!-- sidebar -->
-@extends('web.layouts.sidebar')
-<!-- end sidebar -->
-
 <!-- content body -->
 @yield('content-main')
 <!-- end content body -->

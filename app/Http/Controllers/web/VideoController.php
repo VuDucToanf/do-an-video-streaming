@@ -16,4 +16,20 @@ class VideoController extends Controller
         $video->update($view);
         return view('web.video.index', compact('video'));
     }
+
+    public function search($name)
+    {
+        $data = Video::query()->where('name', 'like', "%{$name}%")->paginate(20);
+        return view('web.video.search', compact('data', 'name'));
+    }
+
+    public function qSearch($name)
+    {
+        $data = Video::query()->where('name', 'like', "%{$name}%")->get();
+        $strResult = "";
+        foreach($data as $rows){
+            $strResult = $strResult."<li><img src=" . asset('upload/images/video/image_video_') . $rows->brief . '.jpg' . "> <a href=" . request()->root() . '/video/detail/' . $rows->brief . ">{$rows->name}</a></li>";
+        }
+        echo $strResult;
+    }
 }

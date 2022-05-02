@@ -46,9 +46,13 @@
                               transition
                               ease-in-out
                               m-0
-                              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
-                        <option value="">Sắp xếp theo lượt xem</option>
-                        <option value="">Sắp xếp theo ngày ra mắt</option>
+                              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                            onchange="location.href = '<?php echo $category->slug ?>?order='+this.value;"
+                    >
+                        <option value="">Sắp xếp</option>
+                        <option value="view_desc">Sắp xếp theo lượt xem giảm dần</option>
+                        <option value="view_asc">Sắp xếp theo lượt xem tăng dần</option>
+                        <option value="published_time">Sắp xếp theo ngày ra mắt</option>
                         <option value="">Sắp xếp theo ngày cập nhật</option>
                     </select>
                 </div>

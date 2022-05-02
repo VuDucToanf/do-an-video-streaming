@@ -1,7 +1,6 @@
 @extends('web.layouts.video')
 @section('content-main')
     <div class="main mr-[20px] flex justify-center flex-nowrap mt-[100px]">
-        <div class="w-[12%]"></div>
         <div class="w-[88%]">
             <div class="menu grid gap-2">
                 <div class="col-span-9">

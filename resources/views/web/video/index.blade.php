@@ -20,10 +20,6 @@
                                     echo date_format($date, "d-m-Y");
                                 ?>
                             </p>
-                            <div class="mt-[20px]">
-                                <p class="text-xl">Mô tả</p>
-                                {!! $video->description !!}
-                            </div>
                         </div>
                         <div class="col-span-5 film_action flex items-center justify-around">
                             <a href="#">
@@ -44,20 +40,36 @@
                             </a>
                         </div>
                     </div>
+                    <div class="mt-[20px] grid grid-cols-12 gap-2">
+                        <div class="col-span-8">
+                            <div class="w-[70%]">
+                                <p class="text-xl font-bold">Mô tả</p>
+                                {!! $video->description !!}
+                            </div>
+                            <div class="w-[100%] mt-[20px]">
+                                <p class="text-xl font-bold">Bình luận</p>
+                                <textarea name="" id="" cols="30" rows="10" placeholder="Bạn cần đăng nhập để bình luận"></textarea>
+                                <div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-1"></div>
+                        <div class="col-span-3">
+                            <p class="text-xl font-bold">Có thể bạn thích</p>
+                            <div>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="grid grid-cols-12 gap-2 my-[20px]">
                 <div class="col-span-8">
-                    <p class="text-xl font-bold">Bình luận</p>
-                    <div>
 
-                    </div>
                 </div>
                 <div class="col-span-4">
-                    <p class="text-xl font-bold">Có thể bạn thích</p>
-                    <div>
 
-                    </div>
                 </div>
             </div>
         </div>

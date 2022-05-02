@@ -3,11 +3,22 @@
 namespace App\Http\Controllers\web;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Video;
+use Illuminate\Http\Client\Request;
 
 class CategoryController extends Controller
 {
-    public function phimBo()
+    public function show($slug)
     {
-        return view('web.category.list');
+        $category = Category::query()->where('slug', $slug)->first();
+        $categories = Category::query()->where('status', 1)->where('deleted', 0)->get();
+        $data = Video::query()
+            ->join('relations_video_category', 'video.id', '=', 'relations_video_category.video_id')
+            ->where('relations_video_category.category_id', '=', $category->id)
+            ->where('video.status', 1)
+            ->where('video.deleted', 0)
+            ->paginate(20);
+        return view('web.category.show', compact('category', 'data', 'categories'));
     }
 }

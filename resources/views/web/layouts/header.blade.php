@@ -61,10 +61,11 @@
                             <div class="swiper-container swp-left">
                                 <div class="swiper-wrapper">
                                     @foreach($categories as $item)
-                                        <button
+                                        <a
+                                            href="<?php echo request()->root() . '/danh-muc/' . $item->slug ?>"
                                             class="swiper-slide bg-white hover:bg-gray-100 text-gray-800 font-semibold border border-gray-400 rounded-full shadow p-[5px] onTab">
                                             {{ $item->title }}
-                                        </button>
+                                        </a>
                                     @endforeach
                                 </div>
                             </div>

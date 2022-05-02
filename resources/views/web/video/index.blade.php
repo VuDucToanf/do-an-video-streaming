@@ -48,6 +48,7 @@
                             </div>
                             <div class="w-[100%] mt-[20px]">
                                 <p class="text-xl font-bold">Bình luận</p>
+                                <form action="multipart/form-data" method="post" action="{{  }}"></form>
                                 <textarea name="" id="" cols="30" rows="10" placeholder="Bạn cần đăng nhập để bình luận"></textarea>
                                 <div>
 

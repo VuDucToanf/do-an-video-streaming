@@ -10,3 +10,7 @@ Route::get('danh-muc/{slug}', [CategoryController::class,'show'])->name('categor
 Route::get('video/detail/{brief}', [VideoController::class,'show'])->name('video');
 Route::get('video/search/q-{search}', [VideoController::class,'search'])->name('video.search');
 Route::get('search/q-{search}', [VideoController::class,'qSearch']);
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

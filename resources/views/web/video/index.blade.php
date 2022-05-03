@@ -23,6 +23,7 @@
                             </p>
                         </div>
                         <div class="col-span-5 film_action flex items-center justify-around">
+                            <example-component></example-component>
                             <like-video :user="{{ auth()->user() }}" :video="{{ $video }}"></like-video>
                             <div class="fb-save" data-uri="http://dev.doanhaui.vn/video/detail/<?php echo $video->brief ?>" data-size="large"></div>
                             <a href="javascript:void(0)">

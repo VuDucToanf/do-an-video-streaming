@@ -14,6 +14,7 @@
     <!-- add icon link -->
     <link rel="icon" href="{{ asset('images/logo2.png') }}" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style-layout.css') }}">
+    <link rel="stylesheet" href="{{ asset('js/app.js') }}">
     <!-- plyr -->
     <link rel="stylesheet" href="https://cdn.plyr.io/3.6.7/plyr.css" />
     <script src="https://cdn.plyr.io/3.6.9/demo.js" crossorigin="anonymous"></script>

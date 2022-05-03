@@ -5,7 +5,7 @@
         <div class="form-w3layouts">
             <section class="panel">
                 <header class="panel-heading">
-                    Tạo mới thể loại
+                    Tạo mới video
                 </header>
                 <div class="panel-body">
                     <form class="form-horizontal bucket-form" method="post" enctype="multipart/form-data">
@@ -33,7 +33,7 @@
                             <label class="col-sm-3 control-label">Ảnh thumb</label>
                             <div class="col-sm-6">
                                 <input class="form-control" type="file" name="thumb_version" accept="image/jpg" onchange="loadFile(event)">
-                                <img id="output" style="margin: 5px;"/>
+                                <img id="output" style="margin: 5px; max-width: 400px"/>
                             </div>
                         </div>
                         <div class="form-group">

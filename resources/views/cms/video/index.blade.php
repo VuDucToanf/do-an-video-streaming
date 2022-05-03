@@ -93,6 +93,18 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-5">
+                        <div class="dataTables_info" id="editable_info" role="status" aria-live="polite">
+                            Hiển thị từ 1 đến {!! isset($data)?count($data):0 !!} trong tổng số {!! isset($params['total'])?$params['total']:0 !!} kết quả
+                        </div>
+                    </div>
+                    <div class="col-sm-5 text-right">
+                        {!! $data->render() !!}
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
             </div>
         </div>
     </section>

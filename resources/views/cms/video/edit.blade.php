@@ -38,7 +38,7 @@
                                             if($data['thumb_version'] == 1 && isset($data['brief']))
                                                 echo asset('/upload/images/video/image_video_' . $data['brief'] . '.jpg');
                                         ?>
-                                    " id="output" style="margin: 5px;"/>
+                                    " id="output" style="margin: 5px; max-width: 400px;"/>
                             </div>
                         </div>
                         <div class="form-group">

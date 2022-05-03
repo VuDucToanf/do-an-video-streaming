@@ -14,7 +14,7 @@ class VideoController extends Controller
             'view' => $video->view
         ];
         $video->update($view);
-        return view('web.video.index', compact('video'));
+        return view('web.video.index', compact('video', 'brief'));
     }
 
     public function search($name)
@@ -31,5 +31,10 @@ class VideoController extends Controller
             $strResult = $strResult."<li><img src=" . asset('upload/images/video/image_video_') . $rows->brief . '.jpg' . "> <a href=" . request()->root() . '/video/detail/' . $rows->brief . ">{$rows->name}</a></li>";
         }
         echo $strResult;
+    }
+
+    public function like()
+    {
+        echo 1; die;
     }
 }

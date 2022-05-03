@@ -45,5 +45,8 @@
 <!-- footer -->
 @extends('web.layouts.footer')
 <!-- end footer -->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v13.0&appId=580947303320217&autoLogAppEvents=1" nonce="uEnqHYhM"></script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v13.0&appId=580947303320217&autoLogAppEvents=1" nonce="ssBoy8IH"></script>
 </body>
 </html>

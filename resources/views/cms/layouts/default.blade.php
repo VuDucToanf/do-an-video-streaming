@@ -279,7 +279,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </a>
                         <ul class="sub">
                             <li><a href="{{ route('cms.category') }}">Quản lý danh mục</a></li>
-                            <li><a href="responsive_table.html">Responsive Table</a></li>
+                            <li><a href="{{ route('cms.banner') }}">Quản lý banner</a></li>
                         </ul>
                     </li>
                     <li class="sub-menu">

@@ -1,10 +1,9 @@
 <template>
-<div class="container">
-    test
+<div>
     <a :class="(liked == 'active')?'like active':'like'"
         @click="controlLike">
         <i class="fas fa-thumbs-up"></i>
-
+        {{ this.likes }}
     </a>
 </div>
 </template>
@@ -19,12 +18,12 @@ export default {
             likes: 0,
             formData: {
                 content: '',
-                user_id: this.user_id,
-                video_id: this.video_id,
+                user_id: this.user.id,
+                video_id: this.video.id,
             },
             likeData: {
-                user_id: this.user_id,
-                video_id: this.video_id,
+                user_id: this.user.id,
+                video_id: this.video.id,
             }
         }
     },
@@ -34,9 +33,8 @@ export default {
     methods: {
         addLike(){
             axios.post('/like/store', this.likeData).then((response) => {
-                this.comments = response.data;
-            }).catch((errors) => {
-                console.log(errors);
+                this.likes++;
+                this.liked = 'active';
             })
         },
         removeLike(){
@@ -66,5 +64,11 @@ export default {
 </script>
 
 <style scoped>
-
+    .like.active i{
+        color: #0000cc;
+    }
+    .like{
+        cursor: pointer;
+        font-size: 20px;
+    }
 </style>

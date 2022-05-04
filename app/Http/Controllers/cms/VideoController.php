@@ -63,6 +63,7 @@ class VideoController extends Controller
         $is_full = $request->get('is_full') ? 1 : 0;
         $is_hot = $request->get('is_hot') ? 1 : 0;
         $copyright = $request->get('copyright');
+        $is_recommend = $request->get('is_recommend') ? $request->get('is_recommend') : 0;
         $categorys = $request->get('categorys', []);
         $thumb_version = 1;
         if($request->hasFile("thumb_version")){
@@ -82,6 +83,7 @@ class VideoController extends Controller
             'is_full' => $is_full,
             'is_hot' => $is_hot,
             'copyright' => $copyright,
+            'is_recommend' => $is_recommend,
             'thumb_version' => $thumb_version,
             'created_time' => date('Y-m-d H:i:s'),
             'updated_time' => date('Y-m-d H:i:s'),
@@ -115,6 +117,7 @@ class VideoController extends Controller
         $published_time = $request->get('published_time');
         $is_full = $request->get('is_full') ? 1 : 0;
         $is_hot = $request->get('is_hot') ? 1 : 0;
+        $is_recommend = $request->get('is_recommend') ? $request->get('is_recommend') : 0;
         $copyright = $request->get('copyright');
         $categorys = $request->get('categorys', []);
         if($request->hasFile("thumb_version")){
@@ -134,6 +137,7 @@ class VideoController extends Controller
             'is_full' => $is_full,
             'is_hot' => $is_hot,
             'copyright' => $copyright,
+            'is_recommend' => $is_recommend,
             'created_time' => date('Y-m-d H:i:s'),
             'updated_time' => date('Y-m-d H:i:s'),
             'created_by_name' => $_SESSION['admin']->username,

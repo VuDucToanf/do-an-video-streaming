@@ -9,6 +9,10 @@ class VideoController extends Controller
 {
     public function show($brief)
     {
+        if(auth()->guest())
+        {
+            return redirect('/login');
+        }
         $video = Video::query()->where('brief', $brief)->first();
         $view = [
             'view' => $video->view
@@ -35,6 +39,13 @@ class VideoController extends Controller
 
     public function like()
     {
-        echo 1; die;
+        $data = Video::query()->where('status', 1)->where('deleted', 0)->orderBy('like', 'desc')->paginate(20);
+        return view('web.video.like', compact('data'));
+    }
+
+    public function recommend()
+    {
+        $data = Video::query()->where('status', 1)->where('deleted', 0)->where('is_recommend', 1)->paginate(20);
+        return view('web.video.recommend', compact('data'));
     }
 }

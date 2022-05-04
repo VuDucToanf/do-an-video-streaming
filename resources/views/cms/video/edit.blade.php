@@ -65,6 +65,17 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="col-sm-3 control-label">Đề xuất video</label>
+                            <div class="col-sm-6">
+                                <div class="radio">
+                                    <label><input type="radio" name="is_recommend" value="1" @if($data['is_recommend'] == 1) checked @endif> Được đề xuất</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" name="is_recommend" value="0" @if($data['is_recommend'] == 0) checked @endif> Không đề xuất</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="col-sm-3 control-label">Thời gian phát hành</label>
                             <div class="col-sm-6">
                                 <input type="datetime-local" class="form-control" name="published_time" value="<?php echo isset($data['published_time'])?$data['published_time']:'';?>">

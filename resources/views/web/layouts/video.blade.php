@@ -14,7 +14,6 @@
     <!-- add icon link -->
     <link rel="icon" href="{{ asset('images/logo2.png') }}" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style-layout.css') }}">
-    <link rel="stylesheet" href="{{ asset('js/app.js') }}">
     <!-- plyr -->
     <link rel="stylesheet" href="https://cdn.plyr.io/3.6.7/plyr.css" />
     <script src="https://cdn.plyr.io/3.6.9/demo.js" crossorigin="anonymous"></script>
@@ -40,7 +39,9 @@
 <!-- end header -->
 
 <!-- content body -->
-@yield('content-main')
+<div id="app" style="min-height: 90vh;">
+    @yield('content-main')
+</div>
 <!-- end content body -->
 
 <!-- footer -->
@@ -49,5 +50,6 @@
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v13.0&appId=580947303320217&autoLogAppEvents=1" nonce="uEnqHYhM"></script>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v13.0&appId=580947303320217&autoLogAppEvents=1" nonce="ssBoy8IH"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

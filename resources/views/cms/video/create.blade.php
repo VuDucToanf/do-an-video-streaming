@@ -2,6 +2,7 @@
 @section('content-main')
 
     <section class="wrapper">
+        <a href="btn btn-info">Quay lại</a>
         <div class="form-w3layouts">
             <section class="panel">
                 <header class="panel-heading">
@@ -86,6 +87,19 @@
                             <label class="col-sm-3 control-label">Bản quyền</label>
                             <div class="col-sm-6">
                                 <input type="text" class="form-control" name="copyright">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Phim cha</label>
+                            <div class="col-sm-6">
+                                <select class="itemName form-control" name="parent_id">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Tập trong seri</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="seri">
                             </div>
                         </div>
                         <div class="form-group">

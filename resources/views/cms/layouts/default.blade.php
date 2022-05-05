@@ -12,6 +12,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- Custom CSS -->
     <link href="{{ asset('cms/css/style.css') }}" rel='stylesheet' type='text/css' />
     <link href="{{ asset('cms/css/style-responsive.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('cms/css/select2.css') }}" rel="stylesheet"/>
     <!-- add icon link -->
     <link rel="icon" href="{{ asset('images/logo2.png') }}" type="image/x-icon">
     <!-- font CSS -->
@@ -25,6 +26,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="{{ asset('cms/js/jquery2.0.3.min.js') }}"></script>
     <script src="{{ asset('cms/js/raphael-min.js') }}"></script>
     <script src="{{ asset('cms/js/chosen.jquery.js') }}"></script>
+    <script src="{{ asset('cms/js/select2.full.js') }}"></script>
+    <script src="{{ asset('cms/js/tinymce.min.js') }}"></script>
     <!-- load ckeditor -->
     <script type="text/javascript" src="{{ asset('assets/ckeditor/ckeditor.js') }}"></script>
 </head>
@@ -285,10 +288,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-tasks"></i>
-                            <span>Form Components</span>
+                            <span>Tài khoản</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="form_component.html">Form Elements</a></li>
+                            <li><a href="{{ route('user.index') }}">Quản lý người dùng</a></li>
                             <li><a href="form_validation.html">Form Validation</a></li>
                             <li><a href="dropzone.html">Dropzone</a></li>
                         </ul>
@@ -369,3 +372,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="{{ asset('cms/js/flot-chart/excanvas.min.js') }}"></script><![endif]-->
 <script src="{{ asset('cms/js/jquery.scrollTo.js') }}"></script>
 </body>
+<script>
+
+    tinymce.init({
+        selector: 'textarea.tinymce-cls',
+        height: 300,
+    });
+
+    $('.itemName').select2({
+        placeholder: 'Chọn phim cha',
+        ajax: {
+            url: '/video/search-film',
+            dataType: 'json',
+            delay: 250,
+            processResults: function (data) {
+                return {
+                    results:  $.map(data, function (item) {
+                        return {
+                            text: item.name,
+                            id: item.id
+                        }
+                    })
+                };
+            },
+            cache: true
+        }
+    });
+</script>

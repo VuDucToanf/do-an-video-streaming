@@ -1,6 +1,7 @@
 @extends('cms.layouts.default')
 @section('content-main')
     <section class="wrapper">
+        <a href="btn btn-info">Quay lại</a>
         <div class="form-w3layouts">
             <section class="panel">
                 <header class="panel-heading">

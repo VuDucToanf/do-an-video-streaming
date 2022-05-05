@@ -65,6 +65,8 @@ class VideoController extends Controller
         $copyright = $request->get('copyright');
         $is_recommend = $request->get('is_recommend') ? $request->get('is_recommend') : 0;
         $categorys = $request->get('categorys', []);
+        $parent_id = $request->get('parent_id') ? $request->get('parent_id') : 0;
+        $seri_order = $request->get('seri_order') ? $request->get('seri_order') : 0;
         $thumb_version = 1;
         if($request->hasFile("thumb_version")){
             $fileName = 'image_video_' . $brief . '.jpg';
@@ -85,6 +87,8 @@ class VideoController extends Controller
             'copyright' => $copyright,
             'is_recommend' => $is_recommend,
             'thumb_version' => $thumb_version,
+            'parent_id' => $parent_id,
+            'seri_order' => $seri_order,
             'created_time' => date('Y-m-d H:i:s'),
             'updated_time' => date('Y-m-d H:i:s'),
             'created_by_name' => $_SESSION['admin']->username,
@@ -120,6 +124,8 @@ class VideoController extends Controller
         $is_recommend = $request->get('is_recommend') ? $request->get('is_recommend') : 0;
         $copyright = $request->get('copyright');
         $categorys = $request->get('categorys', []);
+        $parent_id = $request->get('parent_id') ? $request->get('parent_id') : 0;
+        $seri_order = $request->get('seri_order') ? $request->get('seri_order') : 0;
         if($request->hasFile("thumb_version")){
             $fileName = 'image_video_' . $brief . '.jpg';
             $request->file("thumb_version")->move('upload/images/video',$fileName);
@@ -138,6 +144,8 @@ class VideoController extends Controller
             'is_hot' => $is_hot,
             'copyright' => $copyright,
             'is_recommend' => $is_recommend,
+            'parent_id' => $parent_id,
+            'seri_order' => $seri_order,
             'created_time' => date('Y-m-d H:i:s'),
             'updated_time' => date('Y-m-d H:i:s'),
             'created_by_name' => $_SESSION['admin']->username,
@@ -149,7 +157,7 @@ class VideoController extends Controller
         }
         $result = $clone->update($data);
         if ($result == false) {
-            return back()->withErrors('Không thể cập nhật nghệ sỹ, vui lòng liên hệ kỹ thuật');
+            return back()->withErrors('Không thể cập nhật video, vui lòng liên hệ kỹ thuật');
         }
         RelationsCategoryVideo::relateFromCategory($clone->id, $categorys);
         return redirect('/video');
@@ -161,5 +169,20 @@ class VideoController extends Controller
             'deleted' => 1
         ];
         DB::table('video')->where('id',$id)->update($delete);
+    }
+
+    public function searchFilm(Request $request)
+    {
+        $data = [];
+
+        if($request->has('q')){
+            $search = $request->q;
+            $data =\App\Models\Video::select("id","name")
+                ->where('name','LIKE',"%$search%")
+                ->where('status',1)
+                ->where('deleted',0)
+                ->get();
+        }
+        return response()->json($data);
     }
 }

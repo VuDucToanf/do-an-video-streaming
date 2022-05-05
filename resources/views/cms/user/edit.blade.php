@@ -6,21 +6,27 @@
         <div class="form-w3layouts">
             <section class="panel">
                 <header class="panel-heading">
-                    Chỉnh sửa banner
+                    Chỉnh sửa User
                 </header>
                 <div class="panel-body">
                     <form class="form-horizontal bucket-form" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Ảnh banner</label>
+                            <label class="col-sm-3 control-label">Username</label>
                             <div class="col-sm-6">
-                                <input class="form-control" type="file" name="thumb_version" accept="image/jpg" onchange="loadFile(event)">
-                                <img src="
-                                        <?php
-                                if($data['thumb_version'] == 1)
-                                    echo asset('/upload/images/banner/image_banner_' . $data['id'] . '.jpg');
-                                ?>
-                                    " id="output" style="margin: 5px; max-width: 400px;"/>
+                                <input class="form-control" type="text" name="username" value="{{ $data['username'] }}" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Email</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" type="text" name="email" value="{{ $data['email'] }}" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Mật khẩu</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" type="text" name="password" value="-1">
                             </div>
                         </div>
                         <div class="form-group">

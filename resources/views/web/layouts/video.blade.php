@@ -39,7 +39,7 @@
 <!-- end header -->
 
 <!-- content body -->
-<div id="app" style="min-height: 90vh;">
+<div id="app" style="min-height: 100vh;">
     @yield('content-main')
 </div>
 <!-- end content body -->

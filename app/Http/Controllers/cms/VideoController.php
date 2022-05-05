@@ -185,4 +185,14 @@ class VideoController extends Controller
         }
         return response()->json($data);
     }
+
+    public function show($id)
+    {
+        $data = Video::query()->find($id);
+        if(!$data){
+            abort(404);
+        }
+        $parent = Video::query()->where('id', $data->parent_id)->first();
+        return view('cms.video.show', compact('data','parent'));
+    }
 }

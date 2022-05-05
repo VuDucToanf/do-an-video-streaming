@@ -2,7 +2,7 @@
 @section('content-main')
 
     <section class="wrapper">
-        <a href="btn btn-info">Quay lại</a>
+        <a href="{{ route('user.index') }}" class="btn btn-info">Quay lại</a>
         <div class="form-w3layouts">
             <section class="panel">
                 <header class="panel-heading">

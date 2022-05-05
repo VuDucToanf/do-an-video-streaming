@@ -48,4 +48,10 @@ class VideoController extends Controller
         $data = Video::query()->where('status', 1)->where('deleted', 0)->where('is_recommend', 1)->paginate(20);
         return view('web.video.recommend', compact('data'));
     }
+
+    public function info($brief)
+    {
+        $video = Video::query()->where('brief', $brief)->first();
+        return view('web.video.info', compact('video', 'brief'));
+    }
 }

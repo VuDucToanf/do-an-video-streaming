@@ -25,35 +25,14 @@
                               transition
                               ease-in-out
                               m-0
-                              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
-                        @foreach($categories as $item)
-                            <option value="">
-                                {{ $item->title }}
-                            </option>
-                        @endforeach
-                    </select>
-                    <select name="filter-1" id=""
-                            class="form-select form-select-lg mb-3
-                              appearance-none
-                              px-4
-                              py-2
-                              text-sm
-                              font-normal
-                              text-gray-700
-                              bg-white bg-clip-padding bg-no-repeat
-                              border border-solid border-gray-300
-                              rounded
-                              transition
-                              ease-in-out
-                              m-0
                               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             onchange="location.href = '<?php echo $category->slug ?>?order='+this.value;"
                     >
                         <option value="">Sắp xếp</option>
-                        <option value="view_desc">Sắp xếp theo lượt xem giảm dần</option>
-                        <option value="view_asc">Sắp xếp theo lượt xem tăng dần</option>
-                        <option value="published_time">Sắp xếp theo ngày ra mắt</option>
-                        <option value="">Sắp xếp theo ngày cập nhật</option>
+                        <option value="view_desc" @if(isset($order) && $order == 'view_desc') selected @endif>Sắp xếp theo lượt xem giảm dần</option>
+                        <option value="view_asc" @if(isset($order) && $order == 'view_asc') selected @endif>Sắp xếp theo lượt xem tăng dần</option>
+                        <option value="published_time" @if(isset($order) && $order == 'published_time') selected @endif>Sắp xếp theo ngày ra mắt</option>
+                        <option value="updated_time" @if(isset($order) && $order == 'updated_time') selected @endif>Sắp xếp theo ngày cập nhật</option>
                     </select>
                 </div>
             </div>

@@ -2,9 +2,9 @@
     <div class="overflow-y-auto py-4 px-3 rounded dark:bg-gray-800">
         <ul class="space-y-2">
             <li>
-                <a href="#"
-                   class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                    <i class="fas fa-home flex-shrink-0 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                <a href="{{ route('home') }}"
+                   class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white bg-gray-100 dark:hover:bg-gray-700">
+                    <i class="text-[#3B82F6] fas fa-home flex-shrink-0 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                     <span class="ml-3 whitespace-nowrap">Trang chủ</span>
                 </a>
             </li>
@@ -12,28 +12,14 @@
                 <a href="#"
                    class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                     <i class="fas fa-bookmark flex-shrink-0 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
-                    <span class="flex-1 ml-3 whitespace-nowrap">Kênh đăng ký</span>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Video xu hướng</span>
                 </a>
             </li>
             <li>
-                <a href="#"
+                <a href="{{ route('recommend') }}"
                    class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                     <i class="fas fa-books flex-shrink-0 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
-                    <span class="flex-1 ml-3 whitespace-nowrap">Bộ sưu tập</span>
-                </a>
-            </li>
-            <li>
-                <a href="#"
-                   class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                    <i class="fas fa-thumbs-up flex-shrink-0 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
-                    <span class="flex-1 ml-3 whitespace-nowrap">Video đã thích</span>
-                </a>
-            </li>
-            <li>
-                <a href="#"
-                   class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                    <i class="fad fa-circle flex-shrink-0 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
-                    <span class="flex-1 ml-3 whitespace-nowrap">Sự kiện trực tiếp</span>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Được đề xuẩt bởi BTV</span>
                 </a>
             </li>
             <li>

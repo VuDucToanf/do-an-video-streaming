@@ -2,6 +2,7 @@
 @section('content-main')
 
     <section class="wrapper">
+        <a href="btn btn-info">Quay lại</a>
         <div class="form-w3layouts">
             <section class="panel">
                 <header class="panel-heading">
@@ -38,7 +39,7 @@
                                             if($data['thumb_version'] == 1 && isset($data['brief']))
                                                 echo asset('/upload/images/video/image_video_' . $data['brief'] . '.jpg');
                                         ?>
-                                    " id="output" style="margin: 5px;"/>
+                                    " id="output" style="margin: 5px; max-width: 400px;"/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -65,9 +66,20 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="col-sm-3 control-label">Đề xuất video</label>
+                            <div class="col-sm-6">
+                                <div class="radio">
+                                    <label><input type="radio" name="is_recommend" value="1" @if($data['is_recommend'] == 1) checked @endif> Được đề xuất</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" name="is_recommend" value="0" @if($data['is_recommend'] == 0) checked @endif> Không đề xuất</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="col-sm-3 control-label">Thời gian phát hành</label>
                             <div class="col-sm-6">
-                                <input type="datetime-local" class="form-control" name="published_time" value="<?php echo isset($data['published_time'])?$data['published_time']:'';?>">
+                                <input data-date-format='yyyy-mm-dd' type="text" class="form-control" name="published_time" value="{{ isset($data['published_time'])?date('Y-m-d H:i:s', strtotime($data['published_time'])):'' }}">
                             </div>
                         </div>
                         <div class="form-group">
@@ -91,6 +103,25 @@
                             <label class="col-sm-3 control-label">Bản quyền</label>
                             <div class="col-sm-6">
                                 <input type="text" class="form-control" name="copyright" value="<?php echo isset($data['copyright'])?$data['copyright']:'';?>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Phim cha</label>
+                            <div class="col-sm-6">
+                                <select class="itemName form-control" name="parent_id">
+                                    @if(isset($data['parent_id']))
+                                        @php $parent = \App\Models\Video::query()->find($data['parent_id']); @endphp
+                                        @if(!empty($parent)&&isset($parent))
+                                            <option value="{!! $data['parent_id'] !!}" selected="selected">{!! $parent->name !!}</option>
+                                        @endif
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Thứ tự trong seri</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="seri_order" value="<?php echo isset($data['seri_order'])?$data['seri_order']:'';?>">
                             </div>
                         </div>
                         <div class="form-group">

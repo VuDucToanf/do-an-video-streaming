@@ -5,6 +5,8 @@ use \App\Http\Controllers\cms\HomeController;
 use \App\Http\Controllers\cms\Auth\Auth;
 use \App\Http\Controllers\cms\VideoController;
 use \App\Http\Controllers\cms\CategoryController;
+use App\Http\Controllers\cms\BannerController;
+use App\Http\Controllers\cms\UserController;
 
 Route::get('login', [Auth::class, 'getLogin'])->name('cms.login');
 Route::get('logout', [Auth::class, 'getLogout'])->name('cms.logout');
@@ -14,6 +16,7 @@ Route::group(['middleware' => ['cms']], function () {
     session_start();
     if(isset($_SESSION['admin'])) {
         Route::get('', [HomeController::class, 'index'])->name('cms.home');
+
         Route::get('video', [VideoController::class, 'index'])->name('cms.video');
         Route::get('video/show/{id}', [VideoController::class, 'show'])->name('cms.video.show');
         Route::get('video/create', [VideoController::class, 'create'])->name('cms.video.create');
@@ -21,6 +24,7 @@ Route::group(['middleware' => ['cms']], function () {
         Route::get('video/edit/{id}', [VideoController::class, 'edit'])->name('cms.video.edit');
         Route::post('video/edit/{id}', [VideoController::class, 'update']);
         Route::get('video/delete/{id}', [VideoController::class, 'delete'])->name('cms.video.delete');
+        Route::get('video/search-film', [VideoController::class, 'searchFilm']);
 
         Route::get('category', [CategoryController::class, 'index'])->name('cms.category');
         Route::get('category/view', [CategoryController::class, 'view'])->name('cms.category.view');
@@ -29,5 +33,16 @@ Route::group(['middleware' => ['cms']], function () {
         Route::get('category/update/{id}', [CategoryController::class, 'update'])->name('cms.category.update');
         Route::post('category/update/{id}', [CategoryController::class, 'save']);
         Route::get('category/delete/{id}', [CategoryController::class, 'delete'])->name('cms.category.delete');
+
+        Route::get('banner', [BannerController::class, 'index'])->name('cms.banner');
+        Route::get('banner/show/{id}', [BannerController::class, 'show'])->name('cms.banner.show');
+        Route::get('banner/create', [BannerController::class, 'create'])->name('cms.banner.create');
+        Route::post('banner/create', [BannerController::class, 'store']);
+        Route::get('banner/edit/{id}', [BannerController::class, 'edit'])->name('cms.banner.edit');
+        Route::post('banner/edit/{id}', [BannerController::class, 'update']);
+        Route::get('banner/delete/{id}', [BannerController::class, 'delete'])->name('cms.banner.delete');
+
+        Route::get('user/delete/{id}', [UserController::class, 'delete'])->name('cms.user.delete');
+        Route::resource('user', 'cms\UserController');
     }
 });

@@ -39,4 +39,12 @@ class Video extends Model
     public function categories(){
         return $this->belongsToMany(Category::class,  'relations_video_category',  'video_id','category_id');
     }
+
+    public function likes(){
+        return $this->hasMany('App\Models\Like');
+    }
+
+    public function user(){
+        return $this->belongsTo('App\Models\User');
+    }
 }

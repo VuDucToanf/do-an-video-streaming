@@ -37,15 +37,11 @@
             <div class="elem_banner grid grid-cols-12 gap-2 mb-3">
                 <div class="col-span-8 banner swiper mySwiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img src="{{ asset('images/banner_film_2.jpg') }}" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="{{ asset('images/poster_bo_gia.jpg') }}" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="{{ asset('images/poster_hai_phuong.jpg') }}" alt="">
-                        </div>
+                        @foreach($banner as $item)
+                            <div class="swiper-slide">
+                                <img src="{{ asset('upload/images/banner/image_banner_' . $item->id . '.jpg') }}" alt="">
+                            </div>
+                        @endforeach
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>

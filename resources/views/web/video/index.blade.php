@@ -5,11 +5,12 @@
             <div class="menu grid gap-2">
                 <div class="col-span-9">
                     <video class="w-full" id="player" playsinline controls>
-                        <source src="{{ asset('upload/video/film/film_video_' . $video->brief . '.mp4') }}" type="video/mp4"/>
+                        <source src="{{ asset('upload/video/film/film_video_' . $video->brief . '.mp4') }}" type="video/mp4" size="1080"/>
+                        <source src="{{ asset('upload/video/film/film_video_' . $video->brief . '.mp4') }}" type="video/mp4" size="720"/>
                     </video>
                     <div class="film_description grid grid-cols-12 gap-2">
                         <div class="col-span-6 title">
-                            <p class="title_film uppercase my-[10px]">
+                            <p class="title_film uppercase my-[10px] text-2xl">
                                 <span>{{ $video->name }} - </span>
                                 <span>&copy; {{ $video->copyright }}</span>
                             </p>
@@ -20,44 +21,44 @@
                                     echo date_format($date, "d-m-Y");
                                 ?>
                             </p>
-                            <div class="mt-[20px]">
-                                <p class="text-xl">Mô tả</p>
-                                {!! $video->description !!}
-                            </div>
                         </div>
                         <div class="col-span-5 film_action flex items-center justify-around">
-                            <a href="#">
-                                <i class="fas fa-thumbs-up"></i>
-                                85 THÍCH
-                            </a>
-                            <a href="#">
-                                <i class="fas fa-thumbs-down"></i>
-                                2 KHÔNG THÍCH
-                            </a>
-                            <a href="#">
-                                <i class="fas fa-video-plus"></i>
-                                LƯU
-                            </a>
-                            <a href="#">
+                            <like-video :user="{{ auth()->user() }}" :video="{{ $video }}"></like-video>
+                            <div class="fb-save" data-uri="http://dev.doanhaui.vn/video/detail/<?php echo $video->brief ?>" data-size="large"></div>
+                            <a href="javascript:void(0)">
                                 <i class="fas fa-pennant"></i>
                                 BÁO LỖI
                             </a>
+                        </div>
+                    </div>
+                    <div class="mt-[20px] grid grid-cols-12 gap-2">
+                        <div class="col-span-8">
+                            <div class="w-[70%]">
+                                <p class="text-xl font-bold">Mô tả</p>
+                                {!! $video->description !!}
+                            </div>
+                            <div class="w-[100%] mt-[20px]">
+                                <div class="mt-[20px] content_comments">
+                                    <div class="fb-comments" data-href="{{ request()->url() }}" data-width="" data-numposts="5"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-1"></div>
+                        <div class="col-span-3">
+                            <p class="text-xl font-bold">Có thể bạn thích</p>
+                            <div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="grid grid-cols-12 gap-2 my-[20px]">
                 <div class="col-span-8">
-                    <p class="text-xl font-bold">Bình luận</p>
-                    <div>
 
-                    </div>
                 </div>
                 <div class="col-span-4">
-                    <p class="text-xl font-bold">Có thể bạn thích</p>
-                    <div>
 
-                    </div>
                 </div>
             </div>
         </div>

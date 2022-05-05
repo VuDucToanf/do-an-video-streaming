@@ -1,4 +1,5 @@
 @extends('web.layouts.video')
+@extends('web.layouts.sidebar')
 @section('content-main')
     <style>
         .main {

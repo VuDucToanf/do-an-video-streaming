@@ -90,33 +90,30 @@
         </div>
         <div class="w-[4%]">
             <div class="user">
-                <button class="btn_account">
-                    <img src="{{ asset('images/img-user/xie.jpg') }}" alt="" width="100" height="30">
-                    <div class="sub_menu" id="submenu_account">
-                        <ul>
-                            <li>
-                                <a href="#">Profile
-                                    <i class="fas fa-user"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">Reset password
-                                    <i class="fas fa-key"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">Setting
-                                    <i class="fas fa-cog"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">Logout
-                                    <i class="fas fa-sign-out-alt"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </button>
+                @if(auth()->user())
+                    <button class="btn_account">
+                        <img src="{{ asset('images/img-user/xie.jpg') }}" alt="" width="100" height="30">
+                        <div class="sub_menu" id="submenu_account">
+                            <ul>
+                                <li class="mt-[3px]">
+                                    <p>{{ auth()->user()->fullname }}</p>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }} <i class="fas fa-sign-out-alt"></i>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </button>
+                @else
+                    <a class="nav-link p-[5px] bg-[#3B82F6] text-[#ebebeb]" style="line-height: 80px;" href="{{ route('login') }}">Login</a>
+                @endif
             </div>
         </div>
     </div>

@@ -7,6 +7,8 @@ use \App\Http\Controllers\cms\VideoController;
 use \App\Http\Controllers\cms\CategoryController;
 use App\Http\Controllers\cms\BannerController;
 use App\Http\Controllers\cms\UserController;
+use App\Http\Controllers\cms\ActorController;
+use App\Http\Controllers\cms\AuthorController;
 
 Route::get('login', [Auth::class, 'getLogin'])->name('cms.login');
 Route::get('logout', [Auth::class, 'getLogout'])->name('cms.logout');
@@ -44,5 +46,21 @@ Route::group(['middleware' => ['cms']], function () {
 
         Route::get('user/delete/{id}', [UserController::class, 'delete'])->name('cms.user.delete');
         Route::resource('user', 'cms\UserController');
+
+        Route::get('actor', [ActorController::class, 'index'])->name('cms.actor');
+        Route::get('actor/show/{id}', [ActorController::class, 'show'])->name('cms.actor.show');
+        Route::get('actor/create', [ActorController::class, 'create'])->name('cms.actor.create');
+        Route::post('actor/create', [ActorController::class, 'store']);
+        Route::get('actor/edit/{id}', [ActorController::class, 'edit'])->name('cms.actor.edit');
+        Route::post('actor/edit/{id}', [ActorController::class, 'update']);
+        Route::get('actor/delete/{id}', [ActorController::class, 'delete'])->name('cms.actor.delete');
+
+        Route::get('author', [AuthorController::class, 'index'])->name('cms.author');
+        Route::get('author/show/{id}', [AuthorController::class, 'show'])->name('cms.author.show');
+        Route::get('author/create', [AuthorController::class, 'create'])->name('cms.author.create');
+        Route::post('author/create', [AuthorController::class, 'store']);
+        Route::get('author/edit/{id}', [AuthorController::class, 'edit'])->name('cms.author.edit');
+        Route::post('author/edit/{id}', [AuthorController::class, 'update']);
+        Route::get('author/delete/{id}', [AuthorController::class, 'delete'])->name('cms.author.delete');
     }
 });

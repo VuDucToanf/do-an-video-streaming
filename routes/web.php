@@ -9,11 +9,15 @@ use \App\Http\Controllers\web\DislikeController;
 
 Route::get('/', [HomeController::class,'index'])->name('home');
 Route::get('danh-muc/{slug}', [CategoryController::class,'show'])->name('category');
+
 Route::get('video/detail/{brief}', [VideoController::class,'show'])->name('video');
 Route::get('video/search/q-{search}', [VideoController::class,'search'])->name('video.search');
 Route::get('search/q-{search}', [VideoController::class,'qSearch']);
 Route::get('video/is-recommended', [VideoController::class,'recommend'])->name('recommend');
 Route::get('video/like-ranking', [VideoController::class,'like'])->name('like');
+Route::get('video/info/{brief}', [VideoController::class,'info'])->name('info');
+Route::get('video/actor/{slug}', [VideoController::class,'searchWithActor'])->name('actor');
+Route::get('video/author/{slug}', [VideoController::class,'searchWithAuthor'])->name('author');
 
 Auth::routes();
 

@@ -44,6 +44,14 @@ class Video extends Model
         return $this->hasMany('App\Models\Like');
     }
 
+    public function actors(){
+        return $this->belongsToMany(Actor::class, 'relations_video_actor', 'video_id', 'actor_id');
+    }
+
+    public function authors(){
+        return $this->belongsToMany(Author::class, 'relations_video_author', 'video_id', 'author_id');
+    }
+
     public function user(){
         return $this->belongsTo('App\Models\User');
     }

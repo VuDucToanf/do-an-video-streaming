@@ -80,6 +80,12 @@ class UserController extends Controller
         DB::table('users')->where('id',$id)->update($delete);
     }
 
-    public function show()
-    {}
+    public function show($id)
+    {
+        $data = \App\Models\User::query()->find($id);
+        if(!$data){
+            abort(404);
+        }
+        return view('cms.user.show', compact('data','id'));
+    }
 }

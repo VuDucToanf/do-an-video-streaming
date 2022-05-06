@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\cms;
 
 use App\Http\Controllers\Controller;
+use App\Models\Actor;
+use App\Models\Author;
 use App\Models\Category;
 use App\Models\RelationsCategoryVideo;
+use App\Models\RelationsVideoActor;
+use App\Models\RelationsVideoAuthor;
 use App\Models\Video;
 use File;
 use Illuminate\Http\Request;
@@ -107,9 +111,19 @@ class VideoController extends Controller
     {
         $odm = Video::query()->find($id);
         $data = $odm->toArray();
+
         $categories = Category::query()->where('status', 1)->where('deleted', 0)->get();
         $categories_id_selected = RelationsCategoryVideo::query()->where('video_id', '=', $id)->pluck('category_id')->toArray();
-        return view('cms.video.edit', compact('data', 'categories', 'categories_id_selected'));
+
+
+        $authors = Author::query()->where('status', 1)->where('deleted', 0)->get();
+        $authors_selected = RelationsVideoAuthor::query()->where('video_id', '=', $id)->pluck('author_id')->toArray();
+
+
+        $actors = Actor::query()->where('status', 1)->where('deleted', 0)->get();
+        $actors_selected = RelationsVideoActor::query()->where('video_id', '=', $id)->pluck('actor_id')->toArray();
+
+        return view('cms.video.edit', compact('data', 'categories', 'categories_id_selected', 'authors', 'authors_selected', 'actors', 'actors_selected'));
     }
 
     public function update(Request $request, $id)
@@ -124,6 +138,8 @@ class VideoController extends Controller
         $is_recommend = $request->get('is_recommend') ? $request->get('is_recommend') : 0;
         $copyright = $request->get('copyright');
         $categorys = $request->get('categorys', []);
+        $actors = $request->get('actors', []);
+        $authors = $request->get('authors', []);
         $parent_id = $request->get('parent_id') ? $request->get('parent_id') : 0;
         $seri_order = $request->get('seri_order') ? $request->get('seri_order') : 0;
         if($request->hasFile("thumb_version")){
@@ -160,6 +176,8 @@ class VideoController extends Controller
             return back()->withErrors('Không thể cập nhật video, vui lòng liên hệ kỹ thuật');
         }
         RelationsCategoryVideo::relateFromCategory($clone->id, $categorys);
+        RelationsVideoAuthor::relateFromAuthor($clone->id, $authors);
+        RelationsVideoActor::relateFromActor($clone->id, $actors);
         return redirect('/video');
     }
 
@@ -184,5 +202,15 @@ class VideoController extends Controller
                 ->get();
         }
         return response()->json($data);
+    }
+
+    public function show($id)
+    {
+        $data = Video::query()->find($id);
+        if(!$data){
+            abort(404);
+        }
+        $parent = Video::query()->where('id', $data->parent_id)->first();
+        return view('cms.video.show', compact('data','parent'));
     }
 }

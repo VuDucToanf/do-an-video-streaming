@@ -210,3 +210,9 @@ aside.sidebar{
     border-left: 20px solid #fff;
     margin: -15px 0 0 -6px;
 }
+
+.film-text {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+}

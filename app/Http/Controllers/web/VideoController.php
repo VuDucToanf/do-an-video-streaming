@@ -24,7 +24,12 @@ class VideoController extends Controller
             'view' => $video->view
         ];
         $video->update($view);
-        return view('web.video.index', compact('video', 'brief'));
+
+        $categories_selected = RelationsCategoryVideo::query()->where('video_id', '=', $video->id)->pluck('category_id')->toArray();
+        $video_id_relate = RelationsCategoryVideo::query()->select('video_id')->whereIn('category_id', $categories_selected)->inRandomOrder()->limit(10)->get()->toArray();
+        $video_relate = Video::query()->whereIn('id', $video_id_relate)->limit(5)->get();
+
+        return view('web.video.index', compact('video', 'brief', 'video_relate'));
     }
 
     public function search($name)

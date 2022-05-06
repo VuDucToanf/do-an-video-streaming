@@ -55,6 +55,18 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="col-sm-3 control-label">Đạo diễn</label>
+                            <div class="col-sm-6">
+                                @include('cms.elements.form.choose_multi_item_author',['name'=>'authors', 'text_hint' => 'Chọn đạo diễn', 'datas'=> $authors, 'selected'=>isset($authors_selected)?$authors_selected:[]])
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Thể loại</label>
+                            <div class="col-sm-6">
+                                @include('cms.elements.form.choose_multi_item_author',['name'=>'actors', 'text_hint' => 'Chọn diễn viên', 'datas'=> $actors, 'selected'=>isset($actors_selected)?$actors_selected:[]])
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="col-sm-3 control-label">Trạng thái hoạt động</label>
                             <div class="col-sm-6">
                                 <div class="radio">

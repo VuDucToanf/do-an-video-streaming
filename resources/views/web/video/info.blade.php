@@ -66,7 +66,7 @@
             ?>
             <div class="flex flex-wrap justify-start">
                 @foreach($ep_list as $value)
-                    <button class="bg-[#5BC0DE] text-[white] px-[4px] rounded ml-[5px]" onclick="window.location.href='{{ route('info', $value->brief) }}'">Tập {{ $value->seri_order }}</button>
+                    <button class="bg-[#5BC0DE] text-[white] px-[4px] rounded ml-[5px]" onclick="window.location.href='{{ route('video.info', $value->brief) }}'">Tập {{ $value->seri_order }}</button>
                 @endforeach
             </div>
         @endif
@@ -78,7 +78,7 @@
         <p class="font-bold text-xl mt-[10px]">Có thể bạn thích xem</p>
         <div class="content grid grid-cols-5 gap-5 mt-[10px]">
             @foreach($video_relate as $value)
-                <a href="{{ route('video', $value->brief) }}" class="film-col">
+                <a href="{{ route('video.info', $value->brief) }}" class="film-col">
                     <img src="{{ asset('upload/images/video/image_video_' . $value->brief . '.jpg') }}" alt=""  style="width: 400px;">
                     <p class="title-film text-xl">{{ $value->name }}</p>
                 </a>

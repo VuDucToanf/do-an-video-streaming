@@ -43,7 +43,7 @@ class VideoController extends Controller
         $data = Video::query()->where('name', 'like', "%{$name}%")->get();
         $strResult = "";
         foreach($data as $rows){
-            $strResult = $strResult."<li><img src=" . asset('upload/images/video/image_video_') . $rows->brief . '.jpg' . "> <a href=" . request()->root() . '/video/detail/' . $rows->brief . ">{$rows->name}</a></li>";
+            $strResult = $strResult."<li><img src=" . asset('upload/images/video/image_video_') . $rows->brief . '.jpg' . "> <a href=" . request()->root() . '/video/info/' . $rows->brief . ">{$rows->name}</a></li>";
         }
         echo $strResult;
     }

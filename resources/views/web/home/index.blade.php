@@ -54,7 +54,7 @@
                     <div class="content_ranking mt-3 px-2 overflow-x-hidden h-[515px]">
                         @foreach($video_ranking as $key => $value)
                             <?php $i = $key + 1; ?>
-                            <a href="{{ route('video', $value->brief) }}" class="grid grid-cols-12 mb-5">
+                            <a href="{{ route('video.info', $value->brief) }}" class="grid grid-cols-12 mb-5">
                                 <img class="col-span-2 m-auto" src="{{ asset('images/ranking/' . $i . '.png') }}" alt="">
                                 <img class="col-span-3 m-auto" src="{{ asset('upload/images/video/image_video_' . $value->brief . '.jpg') }}" alt="">
                                 <span class="col-span-7 m-auto">{{ $value->name }}</span>
@@ -82,7 +82,7 @@
                                                         ->get();
                                 foreach($videos_in_category as $value){
                             ?>
-                                <a href="{{ route('video', $value->brief) }}" class="film-col">
+                                <a href="{{ route('video.info', $value->brief) }}" class="film-col">
                                     <img src="{{ asset('upload/images/video/image_video_' . $value->brief . '.jpg') }}" alt="" style="width: 400px;">
                                     <p class="title-film text-xl">{{ $value->name }}</p>
                                     <i class="icon-play"></i>

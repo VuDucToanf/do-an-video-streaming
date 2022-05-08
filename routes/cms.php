@@ -12,6 +12,8 @@ use App\Http\Controllers\cms\AuthorController;
 use App\Http\Controllers\cms\ReportAccessLogController;
 use App\Http\Controllers\cms\AccessLogController;
 use App\Http\Controllers\cms\ReportLikeController;
+use App\Http\Controllers\cms\LikeController;
+use App\Http\Controllers\cms\AdminController;
 
 Route::get('login', [Auth::class, 'getLogin'])->name('cms.login');
 Route::get('logout', [Auth::class, 'getLogout'])->name('cms.logout');
@@ -66,9 +68,17 @@ Route::group(['middleware' => ['cms']], function () {
         Route::post('author/edit/{id}', [AuthorController::class, 'update']);
         Route::get('author/delete/{id}', [AuthorController::class, 'delete'])->name('cms.author.delete');
 
+        Route::get('admin', [AdminController::class, 'index'])->name('cms.admin');
+        Route::get('admin/show/{id}', [AdminController::class, 'show'])->name('cms.admin.show');
+        Route::get('admin/create', [AdminController::class, 'create'])->name('cms.admin.create');
+        Route::post('admin/create', [AdminController::class, 'store']);
+        Route::get('admin/edit/{id}', [AdminController::class, 'edit'])->name('cms.admin.edit');
+        Route::post('admin/edit/{id}', [AdminController::class, 'update']);
+        Route::get('admin/delete/{id}', [AdminController::class, 'delete'])->name('cms.admin.delete');
+
         Route::get('report-access-log', [ReportAccessLogController::class, 'index'])->name('cms.report_access_log');
         Route::get('report-like', [ReportLikeController::class, 'index'])->name('cms.report_like');
         Route::get('access-log/{id}', [AccessLogController::class, 'detail'])->name('cms.access_log');
-        Route::get('like/{id}', [AccessLogController::class, 'detail'])->name('cms.like');
+        Route::get('like/{id}', [LikeController::class, 'detail'])->name('cms.like');
     }
 });

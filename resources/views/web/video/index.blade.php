@@ -32,33 +32,26 @@
                         </div>
                     </div>
                     <div class="mt-[20px] grid grid-cols-12 gap-2">
-                        <div class="col-span-8">
-                            <div class="w-[70%]">
+                        <div class="col-span-7">
+                            <div class="w-[95%]">
                                 <p class="text-xl font-bold">Mô tả</p>
                                 {!! $video->description !!}
                             </div>
-                            <div class="w-[100%] mt-[20px]">
-                                <div class="mt-[20px] content_comments">
-                                    <div class="fb-comments" data-href="{{ request()->url() }}" data-width="" data-numposts="5"></div>
-                                </div>
-                            </div>
                         </div>
-                        <div class="col-span-1"></div>
-                        <div class="col-span-3">
-                            <p class="text-xl font-bold">Có thể bạn thích</p>
-                            <div>
-
-                            </div>
+                        <div class="col-span-5"><div class="fb-comments" data-href="{{ request()->url() }}" data-width="" data-numposts="5"></div></div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="grid grid-cols-12 gap-2 my-[20px]">
-                <div class="col-span-8">
-
-                </div>
-                <div class="col-span-4">
-
+                <div class="col-span-12 mt-[20px]">
+                    <p class="font-bold text-xl mt-[10px]">Có thể bạn thích xem</p>
+                    <div class="content grid grid-cols-5 gap-5 mt-[10px]">
+                        @foreach($video_relate as $value)
+                            <a href="{{ route('video.info', $value->brief) }}" class="film-col">
+                                <img src="{{ asset('upload/images/video/image_video_' . $value->brief . '.jpg') }}" alt=""  style="width: 400px;">
+                                <p class="title-film text-xl">{{ $value->name }}</p>
+                            </a>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>

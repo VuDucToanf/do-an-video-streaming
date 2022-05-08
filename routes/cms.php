@@ -9,6 +9,7 @@ use App\Http\Controllers\cms\BannerController;
 use App\Http\Controllers\cms\UserController;
 use App\Http\Controllers\cms\ActorController;
 use App\Http\Controllers\cms\AuthorController;
+use App\Http\Controllers\cms\ReportAccessLogController;
 
 Route::get('login', [Auth::class, 'getLogin'])->name('cms.login');
 Route::get('logout', [Auth::class, 'getLogout'])->name('cms.logout');
@@ -62,5 +63,7 @@ Route::group(['middleware' => ['cms']], function () {
         Route::get('author/edit/{id}', [AuthorController::class, 'edit'])->name('cms.author.edit');
         Route::post('author/edit/{id}', [AuthorController::class, 'update']);
         Route::get('author/delete/{id}', [AuthorController::class, 'delete'])->name('cms.author.delete');
+
+        Route::get('report-access-log', [ReportAccessLogController::class, 'index'])->name('cms.report_access_log');
     }
 });

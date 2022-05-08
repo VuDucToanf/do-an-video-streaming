@@ -14,7 +14,7 @@
             </div>
             <div class="content mt-[20px] grid grid-cols-5 gap-5">
                 @foreach($data as $value)
-                    <a href="{{ route('video', $value->brief) }}" class="film-col">
+                    <a href="{{ route('video.info', $value->brief) }}" class="film-col">
                         <img src="{{ asset('upload/images/video/image_video_' . $value->brief . '.jpg') }}" alt=""  style="width: 400px;">
                         <p class="title-film text-xl">{{ $value->name }}</p>
                     </a>

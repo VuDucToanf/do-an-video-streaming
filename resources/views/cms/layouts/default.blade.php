@@ -258,7 +258,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="leftside-navigation">
                 <ul class="sidebar-menu" id="nav-accordion">
                     <li>
-                        <a class="active" href="index.html">
+                        <a class="active" href="{{ route('cms.home') }}">
                             <i class="fa fa-dashboard"></i>
                             <span>Dashboard</span>
                         </a>
@@ -308,7 +308,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 {{--                    </li>--}}
                     <li class="sub-menu">
                         <a href="javascript:;">
-                            <i class=" fa fa-bar-chart-o"></i>
+                            <i class="fa fa-glass"></i>
                             <span>Đối tác</span>
                         </a>
                         <ul class="sub">
@@ -316,16 +316,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <li><a href="{{ route('cms.author') }}">Đạo diễn</a></li>
                         </ul>
                     </li>
-{{--                    <li class="sub-menu">--}}
-{{--                        <a href="javascript:;">--}}
-{{--                            <i class=" fa fa-bar-chart-o"></i>--}}
-{{--                            <span>Maps</span>--}}
-{{--                        </a>--}}
-{{--                        <ul class="sub">--}}
-{{--                            <li><a href="google_map.html">Google Map</a></li>--}}
-{{--                            <li><a href="vector_map.html">Vector Map</a></li>--}}
-{{--                        </ul>--}}
-{{--                    </li>--}}
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class=" fa fa-bar-chart-o"></i>
+                            <span>Thống kê</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="{{ route('cms.report_access_log') }}">Thống kê lượt xem</a></li>
+                        </ul>
+                    </li>
 {{--                    <li class="sub-menu">--}}
 {{--                        <a href="javascript:;">--}}
 {{--                            <i class="fa fa-glass"></i>--}}

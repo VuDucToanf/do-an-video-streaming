@@ -1,6 +1,6 @@
 @extends('web.layouts.video')
 @section('content-main')
-<div class="container grid grid-cols-12 mt-[100px] mx-auto px-4 bg-[#f8f8f8]">
+<div class="container grid grid-cols-12 mt-[100px] mx-auto px-4 bg-[#f8f8f8] pt-[20px]">
     <div class="col-span-7 film-col h-auto mx-auto flex justify-start">
         <img src="{{ asset('upload/images/video/image_video_' . $video->brief . '.jpg') }}" alt=""  style="width: 800px; position: relative;">
         <div class="film-text">

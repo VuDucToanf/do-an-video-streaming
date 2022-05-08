@@ -38,7 +38,7 @@
     .smart-search ul li a:hover{color: DarkGreen;}
     .smart-search img{width: 70px; margin-right: 5px;}
 </style>
-<div class="header p-[3px] pt-3 bg-[#FFFFFF]">
+<div class="header p-[3px] pt-3 bg-[#FFFFFF] border-b-2 border-[#ebebeb]">
     <div class="flex flex-center flex-nowrap">
         <div class="w-[12%] pl-[20px]">
             <a class="flex flex-nowrap" href="{{ route('home') }}">

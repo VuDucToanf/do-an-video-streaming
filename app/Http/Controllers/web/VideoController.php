@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\web;
 
 use App\Http\Controllers\Controller;
+use App\Models\AccessLog;
 use App\Models\Actor;
 use App\Models\Author;
 use App\Models\Category;
@@ -15,6 +16,7 @@ class VideoController extends Controller
 {
     public function show($brief)
     {
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
         if(auth()->guest())
         {
             return redirect('/login');
@@ -24,6 +26,12 @@ class VideoController extends Controller
             'view' => $video->view
         ];
         $video->update($view);
+
+        $access_log = new AccessLog();
+        $access_log->log_time = date('Y-m-d H:i:s');
+        $access_log->video_id = $video->id;
+        $access_log->user_id = auth()->user()->id;
+        $access_log->save();
 
         $categories_selected = RelationsCategoryVideo::query()->where('video_id', '=', $video->id)->pluck('category_id')->toArray();
         $video_id_relate = RelationsCategoryVideo::query()->select('video_id')->whereIn('category_id', $categories_selected)->inRandomOrder()->limit(10)->get()->toArray();

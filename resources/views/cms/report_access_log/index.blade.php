@@ -43,12 +43,14 @@
                         <?php $total = 0 ?>
                             @foreach($data_show as $key => $value)
                                 @foreach($value as $k => $v)
-                                    <?php $total += $v[array_key_first($v)] ?>
+                                    <?php $total += $v[array_key_first($v)];?>
                                     <tr>
                                         <td class="text-center">{!! $key !!}</td>
                                         <td class="text-center">{{ array_key_first($v) }}</td>
                                         <td class="text-center">{{ $v[array_key_first($v)] }}</td>
-                                        <td class="text-center"></td>
+                                        <td class="text-center">
+                                            <a href="{{ route('cms.access_log', $v['video_id']) }}" class="btn btn-primary"><i class="fa fa-sticky-note" aria-hidden="true"></i> Chi tiết</a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             @endforeach

@@ -10,6 +10,7 @@ use App\Http\Controllers\cms\UserController;
 use App\Http\Controllers\cms\ActorController;
 use App\Http\Controllers\cms\AuthorController;
 use App\Http\Controllers\cms\ReportAccessLogController;
+use App\Http\Controllers\cms\AccessLogController;
 
 Route::get('login', [Auth::class, 'getLogin'])->name('cms.login');
 Route::get('logout', [Auth::class, 'getLogout'])->name('cms.logout');
@@ -65,5 +66,6 @@ Route::group(['middleware' => ['cms']], function () {
         Route::get('author/delete/{id}', [AuthorController::class, 'delete'])->name('cms.author.delete');
 
         Route::get('report-access-log', [ReportAccessLogController::class, 'index'])->name('cms.report_access_log');
+        Route::get('access-log/{id}', [AccessLogController::class, 'detail'])->name('cms.access_log');
     }
 });

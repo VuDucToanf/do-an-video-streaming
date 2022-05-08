@@ -35,7 +35,8 @@ class ReportAccessLogController extends Controller
             foreach($value as $k => $v)
             {
                 $data_show[$item->date][] = [
-                    $names[$i]->name => $v
+                    $names[$i]->name => $v,
+                    'video_id' => $k
                 ];
                 $i++;
             }

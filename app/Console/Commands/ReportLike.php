@@ -3,18 +3,18 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Models\AccessLog;
-use App\Models\ReportAccessLog as ReportTable;
+use App\Models\Like;
+use App\Models\ReportLike as ReportTable;
 use Illuminate\Support\Facades\DB;
 
-class ReportAccessLog extends Command
+class ReportLike extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'report_access_log:cron';
+    protected $signature = 'report_like:cron';
 
     /**
      * The console command description.
@@ -40,17 +40,18 @@ class ReportAccessLog extends Command
      */
     public function handle()
     {
-//        $date = date('Y-m-d', strtotime("-1 days"));
-        $date = date('Y-m-d');
+        $date = date('Y-m-d', strtotime('-3 days'));
         $date_start = $date . ' 00:00:00';
         $date_end = $date . ' 23:59:59';
-        $access_log = AccessLog::query()
-            ->where('log_time', '>=', $date_start)
-            ->where('log_time', '<=', $date_end)
+
+        $likes = Like::query()
+            ->where('created_time', '>=', $date_start)
+            ->where('created_time', '<=', $date_end)
             ->get();
+
         $video = array();
         $data = array();
-        foreach($access_log as $value)
+        foreach($likes as $value)
         {
             if(!in_array($value->video_id, $data))
             {
@@ -73,8 +74,8 @@ class ReportAccessLog extends Command
             $odm->create($update);
         }
         else {
-            DB::table('report_access_log')->update($update);
+            DB::table('report_like')->update($update);
         }
-        echo 'Analyze access log: Done!';
+        echo 'Analyze user\'s likes : Done!';
     }
 }

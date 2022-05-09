@@ -61,7 +61,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Thể loại</label>
+                            <label class="col-sm-3 control-label">Diễn viên</label>
                             <div class="col-sm-6">
                                 @include('cms.elements.form.choose_multi_item_author',['name'=>'actors', 'text_hint' => 'Chọn diễn viên', 'datas'=> $actors, 'selected'=>isset($actors_selected)?$actors_selected:[]])
                             </div>

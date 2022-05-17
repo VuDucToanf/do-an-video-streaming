@@ -53,8 +53,10 @@ class VideoController extends Controller
 
     public function create()
     {
+        $authors = Author::query()->where('status', 1)->where('deleted', 0)->get();
+        $actors = Actor::query()->where('status', 1)->where('deleted', 0)->get();
         $categories = Category::query()->where('status', 1)->where('deleted', 0)->get();
-        return view('cms.video.create', compact('categories'));
+        return view('cms.video.create', compact('categories', 'authors', 'actors'));
     }
 
     public function store(Request $request)
@@ -64,6 +66,8 @@ class VideoController extends Controller
         $description = $request->get('description');
         $status = $request->get('status') ? 1 : 0;
         $published_time = $request->get('published_time');
+        $actors = $request->get('actors', []);
+        $authors = $request->get('authors', []);
         $is_full = $request->get('is_full') ? 1 : 0;
         $is_hot = $request->get('is_hot') ? 1 : 0;
         $copyright = $request->get('copyright');
@@ -104,6 +108,8 @@ class VideoController extends Controller
             return redirect()->back()->withErrors('Dữ liệu cập nhật không hợp lệ');
         }
         RelationsCategoryVideo::relateFromCategory($clone->id, $categorys);
+        RelationsVideoAuthor::relateFromAuthor($clone->id, $authors);
+        RelationsVideoActor::relateFromActor($clone->id, $actors);
         return redirect('/video');
     }
 

@@ -3,15 +3,15 @@
 namespace App\Http\Controllers\cms;
 
 use App\Http\Controllers\Controller;
-use App\Models\ReportAccessLog;
 use App\Models\Video;
+use App\Models\ReportLike;
 use Illuminate\Http\Request;
 
-class ReportAccessLogController extends Controller
+class ReportLikeController extends Controller
 {
     public function index(Request $request)
     {
-        $data = ReportAccessLog::query();
+        $data = ReportLike::query();
         $filter = [];
         $filter['date'] = $request->get('date');
 
@@ -41,6 +41,6 @@ class ReportAccessLogController extends Controller
                 $i++;
             }
         }
-        return view('cms.report_access_log.index', compact('data', 'data_show', 'filter', 'params'));
+        return view('cms.report_like.index', compact('data', 'data_show', 'filter', 'params'));
     }
 }

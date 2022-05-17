@@ -5,7 +5,7 @@
         <div class="form-w3layouts">
             <section class="panel">
                 <header class="panel-heading">
-                    Thông tin chi tiết User
+                    Thông tin chi tiết Quản trị viên
                 </header>
                 <div class="panel-body">
                     <form class="form-horizontal bucket-form" method="post" enctype="multipart/form-data">
@@ -36,13 +36,13 @@
                         <div class="form-group">
                             <label class="col-sm-6 control-label">Điện thoại</label>
                             <div class="col-sm-6 control-label" style="text-align: left">
-                                {{ $data['mobile'] }}
+                                {{ $data['phone'] }}
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-6 control-label">Ngày tạo</label>
                             <div class="col-sm-6 control-label" style="text-align: left">
-                                {{ $data['created_at'] }}
+                                {{ $data['created_time'] }}
                             </div>
                         </div>
                     </form>

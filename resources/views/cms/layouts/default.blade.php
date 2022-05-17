@@ -323,6 +323,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </a>
                         <ul class="sub">
                             <li><a href="{{ route('cms.report_access_log') }}">Thống kê lượt xem</a></li>
+                            <li><a href="{{ route('cms.report_like') }}">Thống kê lượt like</a></li>
                         </ul>
                     </li>
 {{--                    <li class="sub-menu">--}}

@@ -4,7 +4,7 @@
         <div class="table-agile-info">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Thống kê lượng truy cập
+                    Thống kê lượt like video
                 </div>
                 <div>
                     <table class="table" ui-jq="footable" ui-options='{
@@ -22,11 +22,11 @@
                         <tr>
                             <th class="text-center">Ngày</th>
                             <th class="text-center">Tên film</th>
-                            <th class="text-center">Lượt xem trong ngày</th>
+                            <th class="text-center">Lượt like trong ngày</th>
                             <th class="text-center">Thao tác</th>
                         </tr>
                         <tr>
-                            <form action="{{ route('cms.report_access_log') }}" method="get" id="search_form">
+                            <form action="{{ route('cms.report_like') }}" method="get" id="search_form">
                                 <td class="text-center">
                                     <input name="date" type="date" value="">
                                 </td>
@@ -41,24 +41,24 @@
                         </thead>
                         <tbody>
                         <?php $total = 0 ?>
-                            @foreach($data_show as $key => $value)
-                                @foreach($value as $k => $v)
-                                    <?php $total += $v[array_key_first($v)];?>
-                                    <tr>
-                                        <td class="text-center">{!! $key !!}</td>
-                                        <td class="text-center">{{ array_key_first($v) }}</td>
-                                        <td class="text-center">{{ $v[array_key_first($v)] }}</td>
-                                        <td class="text-center">
-                                            <a href="{{ route('cms.access_log', $v['video_id']) }}" class="btn btn-primary"><i class="fa fa-sticky-note" aria-hidden="true"></i> Chi tiết</a>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                        @foreach($data_show as $key => $value)
+                            @foreach($value as $k => $v)
+                                <?php $total += $v[array_key_first($v)];?>
+                                <tr>
+                                    <td class="text-center">{!! $key !!}</td>
+                                    <td class="text-center">{{ array_key_first($v) }}</td>
+                                    <td class="text-center">{{ $v[array_key_first($v)] }}</td>
+                                    <td class="text-center">
+                                        <a href="{{ route('cms.like', $v['video_id']) }}" class="btn btn-primary"><i class="fa fa-sticky-note" aria-hidden="true"></i> Chi tiết</a>
+                                    </td>
+                                </tr>
                             @endforeach
-                            <tr>
-                                <td></td>
-                                <td class="text-center">Tổng số lượt xem</td>
-                                <td class="text-center">{!! $total !!}</td>
-                            </tr>
+                        @endforeach
+                        <tr>
+                            <td></td>
+                            <td class="text-center">Tổng số lượt like</td>
+                            <td class="text-center">{!! $total !!}</td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
